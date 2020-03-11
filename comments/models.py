@@ -17,13 +17,13 @@ class Comment(models.Model):
 
     id = models.AutoField(primary_key=True)
     content = models.TextField()
-    num_votes = models.IntegerField()
+    num_votes = models.IntegerField(default=0, blank=True)
     date_posted = models.DateTimeField(auto_now_add=True)
     section = models.IntegerField()
-    comment_type = models.CharField(choices=CommentType.choices, max_length=1)
-    parent_comment_id = models.ForeignKey('self', null=True, related_name='children_comments', on_delete=models.CASCADE)
-    creator_id = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
-    article_id = models.ForeignKey(Article, related_name='comments', on_delete=models.CASCADE)
+    comment_type = models.CharField(choices=CommentType.choices, max_length=1)  # Automatically set
+    parent_comment = models.ForeignKey('self', null=True, blank=True, related_name='children_comments', on_delete=models.CASCADE)
+    creator = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
+    article = models.ForeignKey(Article, related_name='comments', on_delete=models.CASCADE)
 
     class Meta:
         """Meta definition for Comment."""  
@@ -32,5 +32,5 @@ class Comment(models.Model):
         verbose_name_plural = 'Comments'
 
     def __str__(self):
-        """Unicode representation of Comment."""
-        pass
+        return self.content
+        # return "Comment by " + str(self.creator) + " on \"" + str(self.article) + "\""

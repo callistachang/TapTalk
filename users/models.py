@@ -7,9 +7,10 @@ class User(models.Model):
 
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    biography = models.TextField()
-    picture_src = models.URLField(null=True, max_length=200)
-    saved_articles = models.ManyToManyField(Article)
+    biography = models.TextField(null=True, blank=True)
+    picture_src = models.URLField(null=True, blank=True, max_length=200)
+    saved_articles = models.ManyToManyField(Article, blank=True)
+    is_expert = models.BooleanField(default=False)
 
     class Meta:
         """Meta definition for User."""

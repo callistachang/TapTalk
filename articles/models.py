@@ -8,11 +8,11 @@ class Article(models.Model):
     id = models.AutoField(primary_key=True)
     content = models.TextField()
     headline = models.CharField(max_length=150)
-    byline = models.TextField(null=True)
+    byline = models.TextField(null=True, blank=True)
     author = models.CharField(max_length=150)
-    date_published = models.DateTimeField(auto_now_add=True)
-    num_sections = models.IntegerField()
-    picture_src = models.URLField(max_length=200)
+    date_published = models.DateTimeField()
+    num_sections = models.IntegerField(null=True, blank=True) # Update based on content
+    picture_src = models.URLField(max_length=200, null=True, blank=True)
 
     class Meta:
         """Meta definition for Article."""
@@ -22,4 +22,4 @@ class Article(models.Model):
 
     def __str__(self):
         """Unicode representation of Article."""
-        pass
+        return self.headline
