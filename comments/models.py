@@ -4,10 +4,6 @@ from django.utils.translation import gettext_lazy as _
 from users.models import User
 from articles.models import Article
 
-COMMENT_TYPES = (
-
-)
-
 class Comment(models.Model):
     """Model definition for Comment."""
 
