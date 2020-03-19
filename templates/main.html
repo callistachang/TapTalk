@@ -1,0 +1,19 @@
+<h1>This is the main page. It will contain a list of articles.</h1>
+
+<hr>
+
+<p>List of articles:</p>
+
+<ul>
+    {% for article in article_list %}
+    <li>
+        <a href="{% url 'article' article.id %}">
+            {{ article.headline }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<p><a href="/profile/2">This goes to the profile page (of Obama for now).</a></p>

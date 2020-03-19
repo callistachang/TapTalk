@@ -1,0 +1,34 @@
+<h1>{{ article.headline }}</h1>
+
+<p>{{ article.byline }}</p>
+
+<p>By: {{ article.author }}</p>
+
+<p>Published on: {{ article.date_published }}</p>
+
+<img src="{{ article.picture_src }}" alt="img" width="20%">
+
+<p>{{ article.content }}</p>
+
+<hr>
+
+<p>Post comment (as Obama for now):</p>
+<form action="{% url 'post_comment' article.id %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="Comment">
+    <input type="submit" name="Submit">
+</form>
+
+{% if error_msg %}
+    <p style='color:red;'>{{ error_msg }}</p>
+{% endif %}
+
+<hr>
+
+<p>List of comments:</p>
+
+<ul>
+    {% for comment in article.comments.all %}
+        <li><b>{{ comment.creator }}: </b>{{ comment }}</li>
+    {% endfor %}
+</ul>
