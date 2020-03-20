@@ -7,7 +7,24 @@
 
 <p>List of saved articles:</p>
 
-<!-- TODO -->
-<ul>
-    <li>(in progress)</li>
-</ul>
+{% if user.saved_articles.all %}
+    <ul>
+        {% for article in user.saved_articles.all %}
+            <li>(in progress)</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>You have not saved any articles.</p>
+{% endif %}
+
+<p>List of comments:</p>
+
+{% if user.comments.all %}
+    <ul>
+        {% for comment in user.comments.all %}
+            <li><b>{{ comment.article }}:</b> {{ comment.content }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>You have not made any comments.</p>
+{% endif %}
