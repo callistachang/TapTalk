@@ -35,16 +35,13 @@ def post_comment(request, article_id):
     content = request.POST['Comment']
     user = User.objects.get(pk=2)
 
-    if not Comment.objects.create_comment(content, user, article, 1):
-        context = {
-            'article': article,
-            'error_msg': 'You are not allowed to post that comment as it is toxic.'
-        }
-        return render(request, 'article.html', context)
+    context = {
+        'article': article,
+    }
 
-    # Comment.objects.create_comment(
-    #         content=content, article=article, creator=user)
-    # except:
-    #     print("Oops")
+    if not Comment.objects.create_comment(content, 1, user, article):
+        context['msg'] = 'You are not allowed to post that comment as it is toxic.'
+    else:
+        context['msg'] = 'The comment was posted successfully.'
 
-    return HttpResponseRedirect(reverse('article', args=(article_id,)))
+    return render(request, 'article.html', context)

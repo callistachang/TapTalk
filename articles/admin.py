@@ -7,6 +7,3 @@ from .models import Article
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('headline', 'author', 'date_published')
     list_filter = ('author', 'date_published')
-
-admin.site.unregister(Article)
-admin.site.register(Article, ArticleAdmin)
