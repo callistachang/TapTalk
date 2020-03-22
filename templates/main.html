@@ -1,19 +1,29 @@
-<h1>This is the main page. It will contain a list of articles.</h1>
+{% extends "./base.html" %}
 
-<hr>
+{% block content %}
 
-<p>List of articles:</p>
+<div class="container">
 
-<ul>
-    {% for article in article_list %}
-    <li>
-        <a href="{% url 'article' article.id %}">
-            {{ article.headline }}
-        </a>
-    </li>
-    {% endfor %}
-</ul>
+    <h1>This is the main page. It will contain a list of articles.</h1>
 
-<hr>
+    <hr>
 
-<p><a href="/profile/2">This goes to the profile page (of Obama for now).</a></p>
+    <p>List of articles:</p>
+
+    <ul>
+        {% for article in article_list %}
+        <li>
+            <a href="{% url 'article' article.id %}">
+                {{ article.headline }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+
+    <p><a href="/profile/2">This goes to the profile page (of Obama for now).</a></p>
+
+</div>
+
+{% endblock %}

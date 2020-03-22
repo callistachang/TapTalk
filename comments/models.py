@@ -29,13 +29,15 @@ def is_comment_valid(content):
 
 # TODO: Section is hardcoded
 class CommentManager(models.Manager):
-    def create_comment(self, content, section, creator, article, parent_comment=None):
+    def create_comment(self, content, section, creator, parent_comment=None):
+        section = Section.objects.get(id=1)
+
         # Comment passes the Perspective API check
         if is_comment_valid(content):
             comment_type = 'U'
             if isinstance(creator, Expert):
                 comment_type = 'E'
-            Comment.objects.create(content=content, section=1, comment_type=comment_type, creator=creator, article=article, parent_comment=parent_comment)
+            Comment.objects.create(content=content, article_section=section, comment_type=comment_type, creator=creator, parent_comment=None)
             return True
         else:
             return False

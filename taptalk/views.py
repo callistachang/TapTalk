@@ -34,6 +34,7 @@ def post_comment(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     content = request.POST['Comment']
     user = User.objects.get(pk=2)
+    print(article, content, user)
 
     context = {
         'article': article,

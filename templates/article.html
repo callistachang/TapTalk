@@ -1,34 +1,65 @@
-<h1>{{ article.headline }}</h1>
+{% extends "./base.html" %}
 
-<p>{{ article.byline }}</p>
+{% block content %}
 
-<p>By: {{ article.author }}</p>
+<div class="container">
 
-<p>Published on: {{ article.date_published }}</p>
+    <!-- ARTICLE INFORMATION -->
 
-<img src="{{ article.picture_src }}" alt="img" width="20%">
+    <h1>{{ article.headline }}</h1>
 
-<p>{{ article.content }}</p>
+    <p>{{ article.byline }}</p>
 
-<hr>
+    <p>By: {{ article.author }}</p>
 
-<p>Post comment (as Obama for now):</p>
-<form action="{% url 'post_comment' article.id %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="Comment">
-    <input type="submit" name="Submit">
-</form>
+    <p>Published on: {{ article.date_published }}</p>
 
-{% if error_msg %}
-    <p style='color:red;'>{{ error_msg }}</p>
-{% endif %}
+    <div class="text-center">
+        <img src="{{ article.picture_src }}" alt="img" class="rounded" width="50%">
+    </div>
+    
+    <!-- width="30%"> -->
 
-<hr>
+    <!-- ARTICLE BODY -->
 
-<p>List of comments:</p>
+    {% for section in article.sections.all %}
+    <p>{{ section.paragraph }}</p>
 
-<ul>
-    {% for comment in article.comments.all %}
-        <li><b>{{ comment.creator }}: </b>{{ comment }}</li>
     {% endfor %}
-</ul>
+
+    <p>{{ article.content }}</p>
+
+    <hr>
+
+    <!-- COMMENT FIELD -->
+
+    <p>Post comment (as Obama for now):</p>
+    <form action="{% url 'post_comment' article.id %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="Comment">
+        <input type="submit" name="Submit">
+    </form>
+
+    {% if msg %}
+        <p style='color:red;'>{{ msg }}</p>
+    {% endif %}
+
+    <hr>
+
+    <!-- COMMENT SECTION -->
+
+    <p>List of comments:</p>
+
+    <ul>
+        {% for section in article.sections.all %}
+            
+            {% for comment in section.comments.all %}
+                <li><b>{{ comment.creator }}: </b>{{ comment }}</li>
+            {% endfor %}
+            
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock %}
