@@ -13,3 +13,5 @@ Built on Django 3.0.3.
 3. Run the server by clicking `run.bat`.
 
 To access the admin site, go to `http://127.0.0.1/8000/admin/` on your browser, and enter the secret admin email and password.
+
+Unless you have my copy of `config.py` (to be placed in the root directory) containing various API keys, some of the functionalities will not work.

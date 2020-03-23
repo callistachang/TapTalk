@@ -18,22 +18,18 @@
         <img src="{{ article.picture_src }}" alt="img" class="rounded" width="50%">
     </div>
     
-    <!-- width="30%"> -->
-
     <!-- ARTICLE BODY -->
 
     {% for section in article.sections.all %}
-    <p>{{ section.paragraph }}</p>
-
+        <p>{{ section.paragraph }}</p>
     {% endfor %}
-
-    <p>{{ article.content }}</p>
 
     <hr>
 
     <!-- COMMENT FIELD -->
 
     <p>Post comment (as Obama for now):</p>
+
     <form action="{% url 'post_comment' article.id %}" method="post">
         {% csrf_token %}
         <input type="text" name="Comment">

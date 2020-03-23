@@ -11,19 +11,23 @@
 
     <hr>
 
+    <!-- SAVED ARTICLES SECTION -->
+
     <p>List of saved articles:</p>
 
     {% if user.saved_articles.all %}
         <ul>
             {% for article in user.saved_articles.all %}
-                <li>(in progress)</li>
+                <li>{{ article.headline }}</li>
             {% endfor %}
         </ul>
     {% else %}
         <p>You have not saved any articles.</p>
     {% endif %}
 
-    <p>List of comments:</p>
+    <!-- COMMENTS HISTORY SECTION -->
+
+    <p>Comment history:</p>
 
     {% if user.comments.all %}
         <ul>

@@ -14,10 +14,10 @@ def is_comment_valid(content):
     }
     data = '{comment: {text: "' + content + '"}, languages: ["en"], requestedAttributes: {TOXICITY:{}}}'
     payload = {
-        "key": config.API_KEY
+        "key": config.PERSPECTIVE_API_KEY
     }
 
-    r = requests.post(config.API_URL, headers=headers, data=data, params=payload)
+    r = requests.post(config.PERSPECTIVE_API_URL, headers=headers, data=data, params=payload)
 
     toxicity_score = r.json()['attributeScores']['TOXICITY']['spanScores'][0]['score']['value']
     print(toxicity_score)
@@ -27,11 +27,9 @@ def is_comment_valid(content):
     else:
         return True
 
-# TODO: Section is hardcoded
+# TODO: Section and parent_comment is hardcoded
 class CommentManager(models.Manager):
     def create_comment(self, content, section, creator, parent_comment=None):
-        section = Section.objects.get(id=1)
-
         # Comment passes the Perspective API check
         if is_comment_valid(content):
             comment_type = 'U'

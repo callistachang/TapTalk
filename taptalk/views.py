@@ -6,6 +6,7 @@ from django.views import generic
 from articles.models import Article
 from users.models import User, Expert
 from comments.models import Comment
+from sections.models import Section
 
 class MainView(generic.ListView):
     template_name = 'main.html'
@@ -14,26 +15,26 @@ class MainView(generic.ListView):
     def get_queryset(self):
         return Article.objects.all()
 
+# TODO: LinkedIn and FB integration
+class ProfileView(generic.DetailView):
+    model = User
+    template_name = 'profile.html'
+
 # TODO: Fetch comments as well
 # TODO: Change to class-based view?
 def article(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     context ={
         'article': article,
-        'error_msg': None
     }
     return render(request, 'article.html', context)
-
-# TODO: LinkedIn and FB integration
-class ProfileView(generic.DetailView):
-    model = User
-    template_name = 'profile.html'
 
 # TODO: User is hardcoded to be Obama, section is hardcoded to 1
 def post_comment(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     content = request.POST['Comment']
     user = User.objects.get(pk=2)
+    section = Section.objects.get(id=1)
     print(article, content, user)
 
     context = {
