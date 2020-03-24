@@ -24,6 +24,14 @@ mimetypes.add_type("text/css", ".css", True)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+# Force https redirect
+SECURE_SSL_REDIRECT = True
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# Force HTTPS in the final URIs
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+
+
 dotenv_file = os.path.join(BASE_DIR, ".env")
 env = False
 
