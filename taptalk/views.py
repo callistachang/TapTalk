@@ -23,7 +23,6 @@ class MainView(generic.ListView):
         return context
 
     def get_queryset(self):
-        logging.debug("hi!")
         return Article.objects.all()
 
 # TODO: LinkedIn and FB integration
@@ -116,7 +115,6 @@ def facebook_auth(request):
     token_request = requests.get(config.LINKEDIN_TOKEN_URL, params=token_params)
 
     print(token_request.content)
-    logging.debug(token_request.content)
 
     token = token_request.json()['access_token']
 
@@ -130,6 +128,5 @@ def facebook_auth(request):
         user = CommonUser.objects.create(name=info['name'], facebook_id=info['id'])
 
     print(user)
-    logging.debug(token_request.content)
 
     return HttpResponseRedirect(reverse('main'))
