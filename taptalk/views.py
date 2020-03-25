@@ -50,6 +50,9 @@ class ArticleView(generic.DetailView):
         context['facebook_login'] = config.FACEBOOK_LOGIN_URL
         context['linkedin_logo'] = config.LINKEDIN_LOGIN_LOGO
         context['facebook_logo'] = config.FACEBOOK_LOGIN_LOGO
+
+        self.request.session['article_id'] = self.kwargs['pk']
+
         return context
 
 # TODO: Section is hardcoded to 1
@@ -114,7 +117,7 @@ def linkedin_auth(request):
     request.session['user_name'] = expert.name
     request.session['user_id'] = expert.id
 
-    return HttpResponseRedirect(reverse('main'))
+    return HttpResponseRedirect('/article/' + str(request.session['article_id']))
 
 # Facebook verification
 def facebook_auth(request):
@@ -140,4 +143,4 @@ def facebook_auth(request):
     request.session['user_name'] = user.name
     request.session['user_id'] = user.id
 
-    return HttpResponseRedirect(reverse('main'))
+    return HttpResponseRedirect('/article/' + str(request.session['article_id']))
