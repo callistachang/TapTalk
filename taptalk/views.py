@@ -11,7 +11,6 @@ import config
 
 import facebook
 import requests
-import logging
 
 class MainView(generic.ListView):
     template_name = 'main.html'
