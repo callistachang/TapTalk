@@ -7,11 +7,11 @@ from articles.models import Article
 from users.models import User, Expert, CommonUser
 from comments.models import Comment
 from sections.models import Section
-
 import config
 
 import facebook
 import requests
+import logging
 
 class MainView(generic.ListView):
     template_name = 'main.html'
@@ -24,6 +24,7 @@ class MainView(generic.ListView):
         return context
 
     def get_queryset(self):
+        logging.debug("hi!")
         return Article.objects.all()
 
 # TODO: LinkedIn and FB integration
@@ -65,9 +66,9 @@ def linkedin_auth(request):
         'grant_type': 'authorization_code',
         'redirect_uri': config.LINKEDIN_REDIRECT_URL,
         'client_id': config.LINKEDIN_CLIENT_ID,
-        'client_secret': config.LINKEDIN_CLIENT_SECRET
+        'client_secret': config.LINKEDIN_CLIENT_SECRET,
+        'code': request.GET['code']
     }
-    token_params['code'] = request.GET['code']
 
     # Get access token
     token_request = requests.get(config.LINKEDIN_TOKEN_URL, params=token_params)
@@ -108,11 +109,16 @@ def facebook_auth(request):
         'client_id': config.FACEBOOK_APP_ID,
         'redirect_uri': config.FACEBOOK_REDIRECT_URL,
         'client_secret': config.FACEBOOK_APP_SECRET,
+        'grant_type': 'client_credentials',
+        'code': request.GET['code']
     }
-    token_params['code'] = request.GET['code']
 
     # Get access token
     token_request = requests.get(config.LINKEDIN_TOKEN_URL, params=token_params)
+
+    print(token_request.content)
+    logging.debug(token_request.content)
+
     token = token_request.json()['access_token']
 
     graph = facebook.GraphAPI(access_token=token, version="2.12")
@@ -125,5 +131,6 @@ def facebook_auth(request):
         user = CommonUser.objects.create(name=info['name'], facebook_id=info['id'])
 
     print(user)
+    logging.debug(token_request.content)
 
     return HttpResponseRedirect(reverse('main'))
