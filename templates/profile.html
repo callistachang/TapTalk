@@ -4,6 +4,12 @@
 
 <div class="container">
 
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
     <h1>This is the profile page.</h1>
 
     <p>Name: {{ user.name }}</p>

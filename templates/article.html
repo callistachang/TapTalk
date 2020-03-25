@@ -4,6 +4,30 @@
 
 <div class="container">
 
+    <!-- MESSAGES TO ALERT THE USER IF THEY HAVE SUCCESSFULLY COMMENTED/LOGGED IN -->
+
+    {% if messages %}
+        {% for message in messages %}
+            <div style='color:red;'>{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    
+    {% if request.session.user_name %}
+        <p>Hi! You have been logged in as {{ request.session.user_name }}</p> 
+    {% endif %}
+
+    <!-- LOGIN BUTTONS -->
+
+    <p><a href="{{ facebook_login }}">
+        <p>User Login:</p>
+        <img width="25%" src="{{ facebook_logo }}" alt="Expert Login">
+    </a></p>
+
+    <p><a href="{{ linkedin_login }}">
+        <p>Expert Login:</p>
+        <img width="20%" src="{{ linkedin_logo }}" alt="User Login">
+    </a></p>
+
     <!-- ARTICLE INFORMATION -->
 
     <h1>{{ article.headline }}</h1>
@@ -28,17 +52,13 @@
 
     <!-- COMMENT FIELD -->
 
-    <p>Post comment (as Obama for now):</p>
+    <p>Post comment:</p>
 
     <form action="{% url 'post_comment' article.id %}" method="post">
         {% csrf_token %}
         <input type="text" name="Comment">
         <input type="submit" name="Submit">
     </form>
-
-    {% if msg %}
-        <p style='color:red;'>{{ msg }}</p>
-    {% endif %}
 
     <hr>
 

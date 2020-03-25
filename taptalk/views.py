@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
+from django.contrib import messages
 
 from articles.models import Article
 from users.models import User, Expert, CommonUser
@@ -32,18 +33,30 @@ class ProfileView(generic.DetailView):
 
 # TODO: Fetch comments as well
 # TODO: Change to class-based view?
-def article(request, article_id):
-    article = get_object_or_404(Article, pk=article_id)
-    context ={
-        'article': article,
-    }
-    return render(request, 'article.html', context)
+# def article(request, article_id):
+#     article = get_object_or_404(Article, pk=article_id)
+#     context ={
+#         'article': article,
+#     }
+#     return render(request, 'article.html', context)
 
-# TODO: User is hardcoded to be Obama, section is hardcoded to 1
+class ArticleView(generic.DetailView):
+    model = Article
+    template_name = 'article.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['linkedin_login'] = config.LINKEDIN_LOGIN_URL
+        context['facebook_login'] = config.FACEBOOK_LOGIN_URL
+        context['linkedin_logo'] = config.LINKEDIN_LOGIN_LOGO
+        context['facebook_logo'] = config.FACEBOOK_LOGIN_LOGO
+        return context
+
+# TODO: Section is hardcoded to 1
 def post_comment(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     content = request.POST['Comment']
-    user = User.objects.get(pk=2)
+    user = User.objects.get(pk=request.session['user_id'])
     section = Section.objects.get(id=1)
     print(article, content, user)
 
@@ -52,11 +65,13 @@ def post_comment(request, article_id):
     }
 
     if not Comment.objects.create_comment(content, section, user, article):
-        context['msg'] = 'You are not allowed to post that comment as it is toxic.'
+        messages.error(request, 'You are not allowed to post that comment.')
     else:
-        context['msg'] = 'The comment was posted successfully.'
+        messages.success(request, 'The comment was posted successfully!')
 
-    return render(request, 'article.html', context)
+    # messages.success(request, _('Thank you'))
+
+    return HttpResponseRedirect('/article/' + str(article.id))
 
 # Expert verification
 def linkedin_auth(request):
@@ -96,10 +111,10 @@ def linkedin_auth(request):
         # Create new expert
         expert = Expert.objects.create(email=email, name=name, expert_title="Hardcoded Expert Title")
 
-    print(expert)
+    request.session['user_name'] = expert.name
+    request.session['user_id'] = expert.id
 
     return HttpResponseRedirect(reverse('main'))
-    # return render(request, 'main.html')
 
 # Facebook verification
 def facebook_auth(request):
@@ -107,17 +122,11 @@ def facebook_auth(request):
         'client_id': config.FACEBOOK_APP_ID,
         'redirect_uri': config.FACEBOOK_REDIRECT_URL,
         'client_secret': config.FACEBOOK_APP_SECRET,
-        'grant_type': 'client_credentials',
         'code': request.GET['code']
     }
 
-    print(token_params)
-
     # Get access token
     token_request = requests.get(config.FACEBOOK_TOKEN_URL, params=token_params)
-
-    print(token_request.content)
-
     token = token_request.json()['access_token']
 
     graph = facebook.GraphAPI(access_token=token, version="2.12")
@@ -126,11 +135,9 @@ def facebook_auth(request):
     try:
         user = CommonUser.objects.get(facebook_id=info['id'])
     except:
-        # Create new user
         user = CommonUser.objects.create(name=info['name'], facebook_id=info['id'])
 
-    print(user)
-
-    request.session['test'] = "I'm logged in as " + str(user)
+    request.session['user_name'] = user.name
+    request.session['user_id'] = user.id
 
     return HttpResponseRedirect(reverse('main'))

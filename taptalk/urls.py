@@ -25,7 +25,7 @@ urlpatterns = [
     path('auth/facebook', views.facebook_auth, name='facebook_auth'),
     path('auth/linkedin', views.linkedin_auth, name='linkedin_auth'),
 
-    path('article/<int:article_id>', views.article, name='article'),
+    path('article/<int:pk>', views.ArticleView.as_view(), name='article'),
     path('article/<int:article_id>/post_comment', views.post_comment, name='post_comment'),
     path('profile/<int:pk>', views.ProfileView.as_view(), name='profile'),
     path('', views.MainView.as_view(), name='main'),

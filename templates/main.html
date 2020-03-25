@@ -4,17 +4,13 @@
 
 <div class="container">
 
-    {% if request.session.test %}
-        <p>Hi! {{ request.session.test }}</p> 
-    {% endif %}
-
-    <h1>This is the main page. It will contain a list of articles.</h1>
-
-    <!-- ARTICLE LIST -->
+    <h1>(For Development Purposes)</h1>
 
     <hr>
 
-    <p>List of articles:</p>
+    <!-- ARTICLE LIST -->
+
+    <p>List of articles currently in the database:</p>
 
     <ul>
         {% for article in article_list %}
@@ -25,16 +21,6 @@
         </li>
         {% endfor %}
     </ul>
-
-    <hr>
-
-    <p><a href="/profile/2">This goes to the profile page (of Obama for now).</a></p>
-
-    <p><a href="{{ linkedin_login }}">EXPERT LOGIN</a></p>
-
-    <p><a href="{{ facebook_login }}">USER LOGIN</a></p>
-
-
 
 </div>
 

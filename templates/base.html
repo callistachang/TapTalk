@@ -19,6 +19,9 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-dark" style="background-color: #d72f1d;">
         <a class="navbar-brand mb-0 h1" href="/">TapTalk!</a>
+        {% if request.session.user_id %}
+          <a class="navbar-brand mb-0 h1" href="{% url 'profile' request.session.user_id %}">My Profile</a>
+        {% endif %}
     </nav>
 
     {% block content %}
