@@ -111,8 +111,10 @@ def facebook_auth(request):
         'code': request.GET['code']
     }
 
+    print(token_params)
+
     # Get access token
-    token_request = requests.get(config.LINKEDIN_TOKEN_URL, params=token_params)
+    token_request = requests.get(config.FACEBOOK_TOKEN_URL, params=token_params)
 
     print(token_request.content)
 
@@ -128,5 +130,7 @@ def facebook_auth(request):
         user = CommonUser.objects.create(name=info['name'], facebook_id=info['id'])
 
     print(user)
+
+    request.session['test'] = "I'm logged in as " + str(user)
 
     return HttpResponseRedirect(reverse('main'))

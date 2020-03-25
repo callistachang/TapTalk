@@ -4,6 +4,10 @@
 
 <div class="container">
 
+    {% if request.session.test %}
+        <p>Hi! {{ request.session.test }}</p> 
+    {% endif %}
+
     <h1>This is the main page. It will contain a list of articles.</h1>
 
     <!-- ARTICLE LIST -->
