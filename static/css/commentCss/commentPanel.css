@@ -21,8 +21,8 @@
 
 /* For the sidepanel that contains expert comments*/
 #userCommentsPanelWrapper {
-    top: 10%;
-    height: 90%;
+    /* top: 10%; */
+    /* height: 90%; */
     right: -350px;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .panelWrapper {
-      width: 350px;
+      width: 300px;
 }
 
 .inner CommentWrapper

@@ -47,16 +47,15 @@
       <a href="#menu-toggle" id="menu-toggle" class="navbar-brand">
         <span class="navbar-toggler-icon"></span>
       </a> 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle Navigation"> 
+      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle Navigation"> 
         <span class="navbar-toggler-icon"></span> 
-      </button>
+      </button> -->
 
       <a class="navbar-brand mb-0 h1" href="/" style="color: whitesmoke;">TapTalk!</a>
 
       <!-- Toggle TapTalk! -->
       <div class="switch tapTalkSwitchWrapper">
         <label>
-          <!-- TODO: Checked should lead to page changes; Should set based on user's preference too -->
           <input type="checkbox" id="isTaptalkOn" checked> 
           <span class="slider round"></span>
         </label>
@@ -68,41 +67,41 @@
       <!-- Sidebar -->
       <div id="sidebar-wrapper">
           <ul class="sidebar-nav">
-              <!-- Today Logo -->
-              <br>
-              <img src="{% static 'images/icons/Today_icon.png' %}" class="rectangleIcon" />
+            <!-- Today Logo -->
+            <br>
+            <img src="{% static 'images/icons/Today_icon.png' %}" class="rectangleIcon" />
 
-              <hr>
+            <hr>
 
-              <!-- Random Tabs -->
-              <li><a href="#">Singapore</a></li>
-              <li><a href="#">World</a></li>
-              <li><a href="#">Big Read</a></li>
-              <li><a href="#">Opinion</a></li>
+            <!-- Random Tabs -->
+            <li><a href="#">Singapore</a></li>
+            <li><a href="#">World</a></li>
+            <li><a href="#">Big Read</a></li>
+            <li><a href="#">Opinion</a></li>
 
-              <hr>
+            <hr>
 
-              <!-- Logged in => Link to profile -->
-              {% if request.session.user_id %}
+            <!-- Logged in => Link to profile -->
+            {% if request.session.user_id %}
 
-                <li><a href="{% url 'profile' request.session.user_id %}">My Profile</a></li>
+              <li><a href="{% url 'profile' request.session.user_id %}">My Profile</a></li>
 
-              <!-- Not logged in => Show login buttons -->
-              {% else %}
+            <!-- Not logged in => Show login buttons -->
+            {% else %}
 
-                <li class="colored">You are not logged in.</li>
+              <li class="colored">You are not logged in.</li>
 
-                <li>User login:</li>
-                <a href="{{ facebook_login }}">
-                  <img src="{% static 'images/icons/facebook_login.png' %}" class="facebookIcon" alt="User Login">
-                </a>
+              <li>User login:</li>
+              <a href="{{ facebook_login }}">
+                <img src="{% static 'images/icons/facebook_login.png' %}" class="facebookIcon" alt="User Login">
+              </a>
 
-                <li>Expert login:</li>
-                <a href="{{ linkedin_login }}">
-                  <img src="{% static 'images/icons/linkedin_login.png' %}" class="linkedinIcon" alt="Expert Login">
-                </a>
+              <li>Expert login:</li>
+              <a href="{{ linkedin_login }}">
+                <img src="{% static 'images/icons/linkedin_login.png' %}" class="linkedinIcon" alt="Expert Login">
+              </a>
 
-              {% endif %}
+            {% endif %}
 
           </ul>
       </div>

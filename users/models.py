@@ -34,6 +34,9 @@ class CommonUser(User):
     def __str__(self):
         """Unicode representation of CommonUser."""
         return self.name
+
+    def is_expert(self):
+        return False
         
 class Expert(User):
     """Model definition for Expert, a subclass of User."""
@@ -52,3 +55,6 @@ class Expert(User):
     def __str__(self):
         """Unicode representation of Expert."""
         return self.name
+
+    def is_expert(self):
+        return True

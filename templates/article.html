@@ -92,13 +92,33 @@
             <div class="comments col" style="padding: 0px;">
                 <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
                 <input id="OpenUserButton" value="User Comment" type="image" src="{% static 'images/icons/Circle1.png' %}" class="tapTalkCommentInterface commentIcon callComment" style="position: absolute; left: 27%; top: 3%" />
-
             </div>
         </div>   
         {% endfor %}
 
     </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
 <!--framework for the Expert Comments-->
 <!--wrapper for the Expert Comments panel-->
@@ -111,78 +131,133 @@
     </div>
     
     <div class="numOfTaps">
-        <label id="numOfExpertComments">1</label> EXPERT TAP ON THIS PARAGRAPH
+        <label id="numOfExpertComments">{{ expert_comments.count }}</label> EXPERT TAPS ON THIS PARAGRAPH
     </div>
-    
-    <div class="NeedBorders commentContentWrapper" style="padding: 0px;">
-        <div class="commentLabel">
-            <b class="username">
-                Mr Toh
-            </b>
-            &nbsp;
-            <b class="timeLastPosted">
-                30/03/2020, 1647hrs
-            </b>
-                &nbsp;
-        </div>
 
-        <div class="NeedBorders commentContent">
-            The article is correct in regards to companies needing to be more careful with the way they handle things. However, given the data of report 616 I do not believe a fininancial crash is on eminent.
-        </div>
+    <ul>
+            
+        {% for comment in expert_comments %}
+            <div class="NeedBorders commentContentWrapper" style="padding: 0px;">
+                <div class="commentLabel">
+                    <b class="username">
+                        {{ comment.creator }}
+                    </b>
+                    &nbsp;
+                    <b class="timeLastPosted">
+                        {{ comment.date_posted }}
+                    </b>
+                        &nbsp;
+                </div>
+        
+                <div class="NeedBorders commentContent">
+                    {{ comment.content }}
+                </div>
+        
+                <div class="commentControlPanel">
+                    <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
+                    <b class="numOfUpvotes" style="color: red;">
+                        {{ comment.num_votes }}
+                    </b>
+                    &nbsp;
+                    <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
+                    &nbsp;
+                    <input id="redirectExpert" class="roundButton expertVerificationButton" type="button" value="Verify Expert Status" />
+                </div>
 
-        <div class="commentControlPanel">
-            <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
-            <b class="numOfUpvotes" style="color: red;">
-                -5
-            </b>
-            &nbsp;
-            <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
-            &nbsp;
-            <input id="redirectExpert" class="roundButton expertVerificationButton" type="button" value="Verify Expert Status" />
-        </div>
-    </div>
+                <br>
+            </div>
+        {% endfor %}
+
+    </ul>
+
 </div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--framework for the User Comments-->
 <!--wrapper for the User Comments panel-->
 <div class="NeedBorders sidePanel panelWrapper" id="userCommentsPanelWrapper" style="padding: 0px;">
 <div class="NeedBorders sidePanel backdrop" id="transparentEffectUser"></div>
 <!--Establish the internal workings of the comments-->
-<div id="NeedBorders userCommentsPanel" style="padding: 0px;">
+<div id="NeedBorders userCommentsPanel" style="padding: 0px; padding-left: 10px; padding-top: 10px">
     <div class="backdrop" style="height: 25%">
 
     </div>
     
     <div class="numOfTaps">
-        <label id="numOfUserComments">1</label> USERS TAP ON THIS PARAGRAPH
+        <label id="numOfUserComments">{{ user_comments.count }}</label> USER TAPS ON THIS PARAGRAPH
     </div>
     
+    
+    {% for comment in user_comments %}
+
     <div class="commentContentWrapper" style="padding: 0px;">
         <div class="NeedBorders commentLabel">
             <b class="username">
-                Greatest Fan!
+                {{ comment.creator }}
             </b>
             &nbsp;
             <b class="timeLastPosted">
-                30/03/2020, 1652hrs
+                {{ comment.date_posted }}
             </b>
                 &nbsp;
         </div>
 
         <div class="NeedBorders commentContent">
-            Praise the Sun! Halimah Yacob is the most humble president.
+            {{ comment.content }}
         </div>
 
         <div class="commentControlPanel">
             <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
             <b class="numOfUpvotes">
-                100
+                {{ comment.num_votes }}
             </b>
             &nbsp;
             <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
         </div>
+        <br>
     </div>
+        
+    {% endfor %}
+        
+
+
+ 
 
                 <div class="commentContentWrapper" style="padding: 0px;">
         <div class="NeedBorders commentLabel">

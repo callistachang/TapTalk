@@ -40,6 +40,12 @@ class CommentManager(models.Manager):
         else:
             return False
 
+    def get_expert_comments(self):
+        return self.filter(comment_type='E')
+
+    def get_user_comments(self):
+        return self.filter(comment_type='U')
+
 class Comment(models.Model):
     """Model definition for Comment."""
 
@@ -69,3 +75,4 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.content
+

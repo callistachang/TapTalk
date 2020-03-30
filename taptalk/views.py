@@ -50,6 +50,8 @@ class ArticleView(generic.DetailView):
         context['facebook_login'] = config.FACEBOOK_LOGIN_URL
         context['linkedin_logo'] = config.LINKEDIN_LOGIN_LOGO
         context['facebook_logo'] = config.FACEBOOK_LOGIN_LOGO
+        context['expert_comments'] = Comment.objects.get_expert_comments()
+        context['user_comments'] = Comment.objects.get_user_comments()
 
         self.request.session['article_id'] = self.kwargs['pk']
 

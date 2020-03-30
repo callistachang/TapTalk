@@ -13,10 +13,6 @@
     }
 );
 
-
-
-
-
 $(function(){
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -44,9 +40,5 @@ $(function(){
       $(".articleSection").removeClass("col-12");
       $(".articleSection").addClass("col-10");
     }
-
-
-    // $(".articleContent").addClass("col-12");
   });
 })
-
