@@ -31,3 +31,8 @@ $(function(){
       }
     });
   });
+
+
+$('#isTaptalkOn').click(function() {
+    $("#taptalkOn").toggle(this.checked);
+});

@@ -7,8 +7,12 @@
 
 .articleTitleContainer
 {
-    background-color: #E8E8E8;
+    background: #E8E8E8;
     padding: 10px 20px;
+}
+
+#wrapper.toggled .articleTitleContainer {
+    background: rgba(232, 232, 232, 0.5);
 }
 
 .headline_title
@@ -65,11 +69,11 @@
 
 .lineInTheMiddle
 {
-      width: 7.5px;
-      position: absolute;
-      left: 50%;
-      height: 100%;
-      z-index: -1px;
+    width: 2px;
+    position: absolute;
+    left: 50%;
+    height: 100%;
+    z-index: -1px;
 }
 
 .commentIcon {

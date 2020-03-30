@@ -10,147 +10,90 @@
 
 <div class="container-fluid">
 
-<!-- Picture -->
-<!-- <div class="text-center">
-    <img src="{{ article.picture_src }}" alt="Article Image" width="25%">
-</div> -->
+    <div class="row align-items-center articleTitleContainer">
 
-  
-<div class="row align-items-center articleTitleContainer">
-    <div style="padding: 0px; width: 100%;">
-        <div style="padding: 0px; float: left;"><img class="squareIcon" src="{% static 'images/icons/views.png' %}" alt="num of views"><label class="articleStatisticDataLabel">5 MIN</label></div>
-        <div style="padding: 0px; float: right; padding-left: 10px"><img class="squareIcon" src="{% static 'images/icons/eyes.png' %}" alt="num of views"><label class="articleStatisticDataLabel">1K</label></div>
-        <div style="padding: 0px; float: right;"><img class="squareIcon" src="{% static 'images/icons/arrow.png' %}" alt="num of shares"><label class="articleStatisticDataLabel">692</label></div>
-    </div>
+        <!-- Metadata -->
+        <div style="padding: 0px; width: 100%;">
+            <div style="padding: 0px; float: left;"><img class="squareIcon" src="{% static 'images/icons/views.png' %}" alt="num of views"><label class="articleStatisticDataLabel">5 MIN</label></div>
+            <div style="padding: 0px; float: right; padding-left: 10px"><img class="squareIcon" src="{% static 'images/icons/eyes.png' %}" alt="num of views"><label class="articleStatisticDataLabel">1K</label></div>
+            <div style="padding: 0px; float: right;"><img class="squareIcon" src="{% static 'images/icons/arrow.png' %}" alt="num of shares"><label class="articleStatisticDataLabel">692</label></div>
+        </div>
 
-    <hr>
-    
-    <h1 class="headline_title" style="padding-top: 5px;">
-        {{ article.headline }}
-    </h1>
-    
-    <div>
-        <div id="articleMetaData" style="padding-top: 5px; padding-bottom: 8px;">
-            <div style="padding: 0px;">
-                <span class="articleMetaDataLabel" style="margin-right: 5px">By</span><span class="articleMetaDataLabel2">{{ article.author }}</span>
+        <hr>
+
+        <!-- Headline -->
+        <h1 class="headline_title" style="padding-top: 5px;">
+            {{ article.headline }}
+        </h1>
+
+        <div class="articleMetaDataLabel" style="padding: 8px 0; color: #828282">
+            {{ article.byline }}
+        </div>
+        
+        <!-- Author and Date Posted -->
+        <div>
+            <div id="articleMetaData" style="padding-bottom: 8px;">
+                <div style="padding: 0px;">
+                    <span class="articleMetaDataLabel" style="margin-right: 5px">By</span><span class="articleMetaDataLabel2">{{ article.author }}</span>
+                </div>
+
+                <div style="padding: 0px;">
+                    <span class="articleMetaDataLabel" style="margin-right: 5px">Published</span><span class="articleMetaDataLabel2">{{ article.date_published }}</span>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Expert and Public Taps -->
+        <div class="row" style="padding: 0px; width: 100%; margin: auto">
+            <div class="col-4" style="padding: 0px;">
+                <img src="{% static 'images/icons/Circle2.png' %}" class="tapTalkCommentInterface commentIcon" style="height: 15px; width: 15px; left: 0px;" />
+                <label class="tapTalkCommentInterface tapLabel" style="left: 0; font-weight: bold">1 Expert Taps</label>
             </div>
 
-            <div style="padding: 0px;">
-                <span class="articleMetaDataLabel" style="margin-right: 5px">Published</span><span class="articleMetaDataLabel2">{{ article.date_published }}</span>
+            <div class="col-4"></div>
+            
+            <div class="col-4" style="padding: 0px;">
+                <label class="tapLabel" style="font-weight: bold;">3 Public Taps</label>
+                <img src="{% static 'images/icons/Circle1.png' %}"  class="commentIcon" />
             </div>
+        </div> 
+        
+    </div>
+
+    <div id="#taptalkOn" class="row" style="padding: 0px;">
+        <div class="comments col" style="padding: 0px;">
+            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
         </div>
-    </div>
-
-    <hr>
-
-
-    <div class="row" style="padding: 0px; width: 100%; margin: auto;">
-        <div class="col-2" style="padding: 0px;">
-            <img src="{% static 'images/icons/Circle2.png' %}" class="tapTalkCommentInterface commentIcon" style="height: 15px; width: 15px; left: 0px;" />
-            <label class="tapTalkCommentInterface tapLabel" style="left: 0;">1</label>
-            <label class="tapTalkCommentInterface tapLabel" style="left: 0;">Expert Taps</label>
+        <div class="align-items-center col-10" style="margin-top: 5px">
         </div>
-        <div class="align-items-center col">
+        <div class="comments col" style="padding: 0px;">
+            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
 
         </div>
-        <div class="col-2" style="padding: 0px;">
-            <label class="tapTalkCommentInterface tapLabel" style="right: 0px;">3</label>
-            <label class="tapTalkCommentInterface tapLabel" style="right: 0px;">Public Taps</label>
-            <img src="{% static 'images/icons/Circle1.png' %}"  class="tapTalkCommentInterface commentIcon " style="height: 15px; width: 15px;right: 0px;" />
+    </div>   
+
+    <!-- Article Content -->
+    {% for section in article.sections.all %}
+    <div id="#taptalkOn" class="row" style="padding: 0px;">
+        <div class="comments col" style="padding: 0px;">
+            <input id="OpenExpertButton" value="Expert Comment" type="image" src="{% static 'images/icons/Circle2.png' %}" class="tapTalkCommentInterface commentIcon callComment" style="position: absolute; left: 29%; top: 3%" />
+            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
         </div>
-    </div> 
-</div>
-
-
-<!--Container for the Article content and comments-->
-<div class="row" style="padding: 0px;">
-    <div class="comments col" style="padding: 0px;">
-        <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-    </div>
-    <div class="align-items-center col-10">
-            <article class="articleContent">
-                SINGAPORE — The recent pay cuts by Singapore's political leaders and top management of some of the city-state's biggest companies are a signal to the public that the economy may be dragged down further if the Covid-19 outbreak becomes protracted, and that they should brace themselves for the worst, analysts said.
-            </article>
-    </div>
-    <div class="comments col" style="padding: 0px;">
+        <div class="align-items-center col-10">
+                <article class="articleContent">
+                    {{ section.paragraph }}
+                </article>
+        </div>
+        <div class="comments col" style="padding: 0px;">
             <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-    </div>
-</div>
+            <input id="OpenUserButton" value="User Comment" type="image" src="{% static 'images/icons/Circle1.png' %}" class="tapTalkCommentInterface commentIcon callComment" style="position: absolute; left: 27%; top: 3%" />
 
-        <!--Container for the Article content and comments-->
-<div class="row" style="padding: 0px;">
-    <div class="comments col" style="padding: 0px;">
-        <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-    </div>
-    <div class="align-items-center col-10">
-            <article class="articleContent">
-                However, the analysts said that companies should not follow suit recklessly, as doing so may cause the ripple effect of people cutting back on spending, which will lead to a “self-fulfilling recession”.
-            </article>
-    </div>
-    <div class="comments col" style="padding: 0px;">
-            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-    </div>
-</div>
+        </div>
+    </div>   
+    {% endfor %}
 
-        <!--Container for the Article content and comments-->
-<div class="row" style="padding: 0px;">
-    <div class="comments col" style="padding: 0px;">
-        <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-    </div>
-    <div class="align-items-center col-10">
-            <article class="articleContent">
-                Already, retailers and food and beverage outlets have reported a slump in their business after the Covid-19 outbreak, with some dropping by as much as 80 per cent.</article>
-    </div>
-    <div class="comments col" style="padding: 0px;">
-            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-    </div>
-</div>
-
-        <!--Container for the Article content and comments-->
-<div class="row" style="padding: 0px;">
-    <div class="comments col" style="padding: 0px;">
-        <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-    </div>
-    <div class="align-items-center col-10">
-            <article class="articleContent">
-                On Friday (Feb 28), Deputy Prime Minister Heng Swee Keat announced that President Halimah Yacob, all ministers and other political office holders, as well as Members of Parliament, will take a one-month pay cut to show their solidarity with Singaporeans amid the virus outbreak.</article>
-    </div>
-    <div class="comments col" style="padding: 0px;">
-            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-            <input id="OpenUserButton" value="User Comment" type="image" src="{% static 'images/icons/Circle1.png' %}" class="tapTalkCommentInterface commentIcon callComment" style="position: absolute; left: 50%;" />
-    </div>
-</div>
-
-        <!--Container for the Article content and comments-->
-<div class="row" style="padding: 0px;">
-    <div class="comments col" style="padding: 0px;">
-        <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-    </div>
-    <div class="align-items-center col-10">
-            <article class="articleContent">
-                Earlier, several companies have announced that its senior management would be freezing their salaries, like state investor Temasek, or taking a 5 to 15 per cent pay cut, such as Singapore Airlines, CapitaLand, as well as SMRT.</article>
-    </div>
-    <div class="comments col" style="padding: 0px;">
-            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-    </div>
-</div>
-
-        <!--Container for the Article content and comments-->
-<div class="row" style="padding: 0px;">
-    <div class="comments col" style="padding: 0px;">
-        <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-        <input id="OpenExpertButton" value="Expert Comment" type="image" src="{% static 'images/icons/Circle2.png' %}" class="tapTalkCommentInterface commentIcon callComment" style="position: absolute; left: 50%;" />
-    </div>
-    <div class="align-items-center col-10">
-            <article class="articleContent">
-                With the economy already hit hard by the outbreak, economists are saying that the wage cuts are signalling that there is a need for more caution among companies or individuals when they spend.</article>
-    </div>
-    <div class="comments col" style="padding: 0px;">
-            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-    </div>
-</div>
-
-</div>
 
 <!--framework for the Expert Comments-->
 <!--wrapper for the Expert Comments panel-->
