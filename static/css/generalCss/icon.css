@@ -7,5 +7,17 @@
 
 .rectangleIcon {
     height: 65px;
-    width: 250px;
+    width: 300px;
+}
+
+.facebookIcon {
+    padding: 10px;
+    height: 65px;
+    width: 300px;
+}
+
+.linkedinIcon {
+    padding: 10px;
+    height: 65px;
+    width: 200px;
 }

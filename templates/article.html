@@ -1,10 +1,299 @@
 {% extends "./base.html" %}
 
+{% load static %}
+
 {% block content %}
 
-<div class="container">
+<div class="text-center">
+    <img src="{{ article.picture_src }}" alt="Article Image" width="100%" class="gradient">
+</div>
 
-    <!-- MESSAGES TO ALERT THE USER IF THEY HAVE SUCCESSFULLY COMMENTED/LOGGED IN -->
+<div class="container-fluid">
+
+<!-- Picture -->
+<!-- <div class="text-center">
+    <img src="{{ article.picture_src }}" alt="Article Image" width="25%">
+</div> -->
+
+  
+<div class="row align-items-center articleTitleContainer">
+    <div style="padding: 0px; width: 100%;">
+        <div style="padding: 0px; float: left;"><img class="squareIcon" src="{% static 'images/icons/views.png' %}" alt="num of views"><label class="articleStatisticDataLabel">5 MIN</label></div>
+        <div style="padding: 0px; float: right; padding-left: 10px"><img class="squareIcon" src="{% static 'images/icons/eyes.png' %}" alt="num of views"><label class="articleStatisticDataLabel">1K</label></div>
+        <div style="padding: 0px; float: right;"><img class="squareIcon" src="{% static 'images/icons/arrow.png' %}" alt="num of shares"><label class="articleStatisticDataLabel">692</label></div>
+    </div>
+
+    <hr>
+    
+    <h1 class="headline_title" style="padding-top: 5px;">
+        {{ article.headline }}
+    </h1>
+    
+    <div>
+        <div id="articleMetaData" style="padding-top: 5px; padding-bottom: 8px;">
+            <div style="padding: 0px;">
+                <span class="articleMetaDataLabel" style="margin-right: 5px">By</span><span class="articleMetaDataLabel2">{{ article.author }}</span>
+            </div>
+
+            <div style="padding: 0px;">
+                <span class="articleMetaDataLabel" style="margin-right: 5px">Published</span><span class="articleMetaDataLabel2">{{ article.date_published }}</span>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+
+    <div class="row" style="padding: 0px; width: 100%; margin: auto;">
+        <div class="col-2" style="padding: 0px;">
+            <img src="{% static 'images/icons/Circle2.png' %}" class="tapTalkCommentInterface commentIcon" style="height: 15px; width: 15px; left: 0px;" />
+            <label class="tapTalkCommentInterface tapLabel" style="left: 0;">1</label>
+            <label class="tapTalkCommentInterface tapLabel" style="left: 0;">Expert Taps</label>
+        </div>
+        <div class="align-items-center col">
+
+        </div>
+        <div class="col-2" style="padding: 0px;">
+            <label class="tapTalkCommentInterface tapLabel" style="right: 0px;">3</label>
+            <label class="tapTalkCommentInterface tapLabel" style="right: 0px;">Public Taps</label>
+            <img src="{% static 'images/icons/Circle1.png' %}"  class="tapTalkCommentInterface commentIcon " style="height: 15px; width: 15px;right: 0px;" />
+        </div>
+    </div> 
+</div>
+
+
+<!--Container for the Article content and comments-->
+<div class="row" style="padding: 0px;">
+    <div class="comments col" style="padding: 0px;">
+        <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+    </div>
+    <div class="align-items-center col-10">
+            <article class="articleContent">
+                SINGAPORE — The recent pay cuts by Singapore's political leaders and top management of some of the city-state's biggest companies are a signal to the public that the economy may be dragged down further if the Covid-19 outbreak becomes protracted, and that they should brace themselves for the worst, analysts said.
+            </article>
+    </div>
+    <div class="comments col" style="padding: 0px;">
+            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+    </div>
+</div>
+
+        <!--Container for the Article content and comments-->
+<div class="row" style="padding: 0px;">
+    <div class="comments col" style="padding: 0px;">
+        <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+    </div>
+    <div class="align-items-center col-10">
+            <article class="articleContent">
+                However, the analysts said that companies should not follow suit recklessly, as doing so may cause the ripple effect of people cutting back on spending, which will lead to a “self-fulfilling recession”.
+            </article>
+    </div>
+    <div class="comments col" style="padding: 0px;">
+            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+    </div>
+</div>
+
+        <!--Container for the Article content and comments-->
+<div class="row" style="padding: 0px;">
+    <div class="comments col" style="padding: 0px;">
+        <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+    </div>
+    <div class="align-items-center col-10">
+            <article class="articleContent">
+                Already, retailers and food and beverage outlets have reported a slump in their business after the Covid-19 outbreak, with some dropping by as much as 80 per cent.</article>
+    </div>
+    <div class="comments col" style="padding: 0px;">
+            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+    </div>
+</div>
+
+        <!--Container for the Article content and comments-->
+<div class="row" style="padding: 0px;">
+    <div class="comments col" style="padding: 0px;">
+        <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+    </div>
+    <div class="align-items-center col-10">
+            <article class="articleContent">
+                On Friday (Feb 28), Deputy Prime Minister Heng Swee Keat announced that President Halimah Yacob, all ministers and other political office holders, as well as Members of Parliament, will take a one-month pay cut to show their solidarity with Singaporeans amid the virus outbreak.</article>
+    </div>
+    <div class="comments col" style="padding: 0px;">
+            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+            <input id="OpenUserButton" value="User Comment" type="image" src="{% static 'images/icons/Circle1.png' %}" class="tapTalkCommentInterface commentIcon callComment" style="position: absolute; left: 50%;" />
+    </div>
+</div>
+
+        <!--Container for the Article content and comments-->
+<div class="row" style="padding: 0px;">
+    <div class="comments col" style="padding: 0px;">
+        <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+    </div>
+    <div class="align-items-center col-10">
+            <article class="articleContent">
+                Earlier, several companies have announced that its senior management would be freezing their salaries, like state investor Temasek, or taking a 5 to 15 per cent pay cut, such as Singapore Airlines, CapitaLand, as well as SMRT.</article>
+    </div>
+    <div class="comments col" style="padding: 0px;">
+            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+    </div>
+</div>
+
+        <!--Container for the Article content and comments-->
+<div class="row" style="padding: 0px;">
+    <div class="comments col" style="padding: 0px;">
+        <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+        <input id="OpenExpertButton" value="Expert Comment" type="image" src="{% static 'images/icons/Circle2.png' %}" class="tapTalkCommentInterface commentIcon callComment" style="position: absolute; left: 50%;" />
+    </div>
+    <div class="align-items-center col-10">
+            <article class="articleContent">
+                With the economy already hit hard by the outbreak, economists are saying that the wage cuts are signalling that there is a need for more caution among companies or individuals when they spend.</article>
+    </div>
+    <div class="comments col" style="padding: 0px;">
+            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+    </div>
+</div>
+
+</div>
+
+<!--framework for the Expert Comments-->
+<!--wrapper for the Expert Comments panel-->
+<div class="NeedBorders sidePanel panelWrapper" id="expertCommentsPanelWrapper" style="padding: 0px;">
+<div class="NeedBorders sidePanel backdrop" id="transparentEffectExpert"></div>
+<!--Establish the internal workings of the comments-->
+<div id="NeedBorders expertCommentsPanel" style="padding: 0px;">
+    <div class="backdrop" style="height: 25%">
+
+    </div>
+    
+    <div class="numOfTaps">
+        <label id="numOfExpertComments">1</label> EXPERT TAP ON THIS PARAGRAPH
+    </div>
+    
+    <div class="NeedBorders commentContentWrapper" style="padding: 0px;">
+        <div class="commentLabel">
+            <b class="username">
+                Mr Toh
+            </b>
+            &nbsp;
+            <b class="timeLastPosted">
+                30/03/2020, 1647hrs
+            </b>
+                &nbsp;
+        </div>
+
+        <div class="NeedBorders commentContent">
+            The article is correct in regards to companies needing to be more careful with the way they handle things. However, given the data of report 616 I do not believe a fininancial crash is on eminent.
+        </div>
+
+        <div class="commentControlPanel">
+            <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
+            <b class="numOfUpvotes" style="color: red;">
+                -5
+            </b>
+            &nbsp;
+            <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
+            &nbsp;
+            <input id="redirectExpert" class="roundButton expertVerificationButton" type="button" value="Verify Expert Status" />
+        </div>
+    </div>
+</div>
+</div>
+
+<!--framework for the User Comments-->
+<!--wrapper for the User Comments panel-->
+<div class="NeedBorders sidePanel panelWrapper" id="userCommentsPanelWrapper" style="padding: 0px;">
+<div class="NeedBorders sidePanel backdrop" id="transparentEffectUser"></div>
+<!--Establish the internal workings of the comments-->
+<div id="NeedBorders userCommentsPanel" style="padding: 0px;">
+    <div class="backdrop" style="height: 25%">
+
+    </div>
+    
+    <div class="numOfTaps">
+        <label id="numOfUserComments">1</label> USERS TAP ON THIS PARAGRAPH
+    </div>
+    
+    <div class="commentContentWrapper" style="padding: 0px;">
+        <div class="NeedBorders commentLabel">
+            <b class="username">
+                Greatest Fan!
+            </b>
+            &nbsp;
+            <b class="timeLastPosted">
+                30/03/2020, 1652hrs
+            </b>
+                &nbsp;
+        </div>
+
+        <div class="NeedBorders commentContent">
+            Praise the Sun! Halimah Yacob is the most humble president.
+        </div>
+
+        <div class="commentControlPanel">
+            <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
+            <b class="numOfUpvotes">
+                100
+            </b>
+            &nbsp;
+            <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
+        </div>
+    </div>
+
+                <div class="commentContentWrapper" style="padding: 0px;">
+        <div class="NeedBorders commentLabel">
+            <b class="username">
+                Woke Skeptic!
+            </b>
+            &nbsp;
+            <b class="timeLastPosted">
+                30/03/2020, 1651hrs
+            </b>
+                &nbsp;
+        </div>
+
+        <div class="NeedBorders commentContent">
+            Better than trump and Clinton...not that you have to try hard to be better...
+        </div>
+
+        <div class="commentControlPanel">
+            <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
+            <b class="numOfUpvotes">
+                50
+            </b>
+            &nbsp;
+            <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
+        </div>
+    </div>
+
+    <div class="commentContentWrapper" style="padding: 0px;">
+        <div class="NeedBorders commentLabel">
+            <b class="username">
+                Toh Jian Hao
+            </b>
+            &nbsp;
+            <b class="timeLastPosted">
+                29/03/2020, 1642hrs
+            </b>
+                &nbsp;
+        </div>
+
+        <div class="NeedBorders commentContent">
+            Hi. Is this the Straits Times Website?
+        </div>
+
+        <div class="commentControlPanel">
+            <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
+            <b class="numOfUpvotes" style="color: red">
+                -1000
+            </b>
+            &nbsp;
+            <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!-- <div class="container">
+
+    MESSAGES TO ALERT THE USER IF THEY HAVE SUCCESSFULLY COMMENTED/LOGGED IN
 
     {% if messages %}
         {% for message in messages %}
@@ -16,19 +305,7 @@
         <p>Hi! You have been logged in as {{ request.session.user_name }}</p> 
     {% endif %}
 
-    <!-- LOGIN BUTTONS -->
-
-    <p><a href="{{ facebook_login }}">
-        <p>User Login:</p>
-        <img width="25%" src="{{ facebook_logo }}" alt="Expert Login">
-    </a></p>
-
-    <p><a href="{{ linkedin_login }}">
-        <p>Expert Login:</p>
-        <img width="20%" src="{{ linkedin_logo }}" alt="User Login">
-    </a></p>
-
-    <!-- ARTICLE INFORMATION -->
+    ARTICLE INFORMATION
 
     <h1>{{ article.headline }}</h1>
 
@@ -42,7 +319,7 @@
         <img src="{{ article.picture_src }}" alt="img" class="rounded" width="50%">
     </div>
     
-    <!-- ARTICLE BODY -->
+    ARTICLE BODY
 
     {% for section in article.sections.all %}
         <p>{{ section.paragraph }}</p>
@@ -50,7 +327,7 @@
 
     <hr>
 
-    <!-- COMMENT FIELD -->
+    COMMENT FIELD
 
     <p>Post comment:</p>
 
@@ -62,7 +339,7 @@
 
     <hr>
 
-    <!-- COMMENT SECTION -->
+    COMMENT SECTION
 
     <p>List of comments:</p>
 
@@ -76,6 +353,6 @@
         {% endfor %}
     </ul>
 
-</div>
+</div> -->
 
 {% endblock %}

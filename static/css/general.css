@@ -1,0 +1,31 @@
+a {
+    color: #d72f1d;
+}
+
+body {
+    padding-top: 55px; 
+}
+
+nav {
+    background: #d72f1d;
+}
+
+.colored {
+    color: #d72f1d;
+}
+
+.grey-bg {
+    background: #e8e8e8;
+}
+
+hr {
+  border: 0;
+  width: 98%;
+  background-color: #cdcdcd;
+  height: 1px;
+  margin: 5px;
+}
+
+.gradient {
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 10%, rgba(255,255,255,0.9) 100%);
+}
