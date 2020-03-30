@@ -60,7 +60,3 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
-h1 {
-  color: green
-}
