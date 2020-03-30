@@ -62,37 +62,42 @@
         
     </div>
 
-    <div id="#taptalkOn" class="row" style="padding: 0px;">
-        <div class="comments col" style="padding: 0px;">
-            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-        </div>
-        <div class="align-items-center col-10" style="margin-top: 5px">
-        </div>
-        <div class="comments col" style="padding: 0px;">
-            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+    <div class="taptalkOn">
 
-        </div>
-    </div>   
+        <div class="row" style="padding: 0px;">
+            <div class="comments col" style="padding: 0px;">
+                <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+            </div>
+            <div class="align-items-center col-10" style="margin-top: 10px">
+            </div>
+            <div class="comments col" style="padding: 0px;">
+                <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
 
-    <!-- Article Content -->
-    {% for section in article.sections.all %}
-    <div id="#taptalkOn" class="row" style="padding: 0px;">
-        <div class="comments col" style="padding: 0px;">
-            <input id="OpenExpertButton" value="Expert Comment" type="image" src="{% static 'images/icons/Circle2.png' %}" class="tapTalkCommentInterface commentIcon callComment" style="position: absolute; left: 29%; top: 3%" />
-            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-        </div>
-        <div class="align-items-center col-10">
-                <article class="articleContent">
-                    {{ section.paragraph }}
-                </article>
-        </div>
-        <div class="comments col" style="padding: 0px;">
-            <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
-            <input id="OpenUserButton" value="User Comment" type="image" src="{% static 'images/icons/Circle1.png' %}" class="tapTalkCommentInterface commentIcon callComment" style="position: absolute; left: 27%; top: 3%" />
+            </div>
+        </div>   
 
-        </div>
-    </div>   
-    {% endfor %}
+        <!-- Article Content -->
+        {% for section in article.sections.all %}
+        <div class="row" style="padding: 0px;">
+            <div class="comments col" style="padding: 0px;">
+                <input id="OpenExpertButton" value="Expert Comment" type="image" src="{% static 'images/icons/Circle2.png' %}" class="tapTalkCommentInterface commentIcon callComment" style="position: absolute; left: 29%; top: 3%" />
+                <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+            </div>
+            <div class="align-items-center col-10 articleSection">
+                    <article class="articleContent">
+                        {{ section.paragraph }}
+                    </article>
+                    <br>
+            </div>
+            <div class="comments col" style="padding: 0px;">
+                <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+                <input id="OpenUserButton" value="User Comment" type="image" src="{% static 'images/icons/Circle1.png' %}" class="tapTalkCommentInterface commentIcon callComment" style="position: absolute; left: 27%; top: 3%" />
+
+            </div>
+        </div>   
+        {% endfor %}
+
+    </div>
 
 
 <!--framework for the Expert Comments-->

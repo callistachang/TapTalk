@@ -32,7 +32,21 @@ $(function(){
     });
   });
 
+$(function(){
+  $('#isTaptalkOn').click(function() {
+    $(".comments").toggle(this.checked);
+    
+    if (this.checked == false) {
+      $(".articleSection").removeClass("col-10");
+      $(".articleSection").addClass("col-12");
 
-$('#isTaptalkOn').click(function() {
-    $("#taptalkOn").toggle(this.checked);
-});
+    } else {
+      $(".articleSection").removeClass("col-12");
+      $(".articleSection").addClass("col-10");
+    }
+
+
+    // $(".articleContent").addClass("col-12");
+  });
+})
+
