@@ -20,12 +20,12 @@ import dotenv
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Force https redirect
-SECURE_SSL_REDIRECT = True
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# Force HTTPS in the final URIs
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+# # Force https redirect
+# SECURE_SSL_REDIRECT = True
+# # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# # Force HTTPS in the final URIs
+# SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 
 dotenv_file = os.path.join(BASE_DIR, ".env")
@@ -140,13 +140,19 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = ''
+
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+
+STATICFILES_DIRS = [
+    os.path.join('static')
+]
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())

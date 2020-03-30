@@ -1,0 +1,79 @@
+﻿hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 98%;
+  background-color: #A9A9A9;
+  height: 3px;
+}
+
+.headline_image
+{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.articleTitleContainer
+{
+    background-color: #E8E8E8;
+}
+
+.headline_title
+{
+    margin: auto;
+    font-size: 28px;
+    font-family: lora;
+    font-weight: bold;
+}
+
+#articleMetaData
+{
+    left: 0px;
+}
+
+.articleStatisticDataLabel
+{
+    font-size: 10px;
+    font-family: lora;
+    font-style: italic;
+}
+
+.articleMetaDataLabel
+{
+    font-size: 16px;
+    font-family: lora;
+    font-style: italic;
+}
+
+.tapLabel
+{
+    color: #D72F1D;
+    font-size: 12px;
+    font-family: lora;
+    font-style: bold;
+}
+
+.articleContent
+{
+    font-size: 16px;
+    font-family: lora;
+    font-style: normal;
+   style="word-wrap:break-word";
+}
+
+.lineInTheMiddle
+{
+      width: 7.5px;
+      position: absolute;
+      left: 50%;
+      height: 100%;
+      z-index: -1px;
+}
+
+.commentIcon {
+    height: 15px;
+    width: 15px; 
+    z-index: 1px;
+}
+

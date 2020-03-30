@@ -1,0 +1,19 @@
+﻿/*Set the location of the switch*/
+.tapTalkSwitchWrapper {
+    position: absolute;
+    right: 20px
+}
+
+.openBtnSideMenu:hover {
+  background-color: #444;
+}
+
+#openHamburgerMenuButton
+{
+    float: left;
+}
+
+#searchButtonNavBar
+{
+    float: left;
+}

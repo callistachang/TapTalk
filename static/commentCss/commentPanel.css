@@ -1,0 +1,91 @@
+﻿/* For the sidepanel that contains expert comments*/
+#expertCommentsPanelWrapper {
+    left: -350px;
+    top: 10%;
+    height: 90%;
+}
+
+#expertCommentsPanel {
+    float: left;
+    height: 100%;
+    width: 300px;;
+    background-color: white;
+    overflow-y: auto; 
+}
+
+#transparentEffectExpert {
+    width: 50px;
+    left: -50px;
+    z-index: -1;
+}
+
+/* For the sidepanel that contains expert comments*/
+#userCommentsPanelWrapper {
+    top: 10%;
+    height: 90%;
+    right: -350px;
+}
+
+#userCommentsPanel {
+    float: right;
+    height: 100%;
+    width: 300px;;
+    background-color: white;
+    overflow-y: auto; 
+}
+
+#transparentEffectUser {
+    width: 50px;
+    right: -50px;
+    z-index: -1;
+}
+
+.panelWrapper {
+      width: 350px;
+}
+
+.inner CommentWrapper
+{
+      height: 100%;
+}
+
+.backdrop
+{
+    //background-image: url("../../images/background/commentBackdropPlaceholder.png");
+    background-color: black;  
+    opacity: 0.36;
+    top: 10%;
+    height: 90%;
+}
+
+.numOfTaps
+{
+    color: red;
+    font-size: 15px;
+    font-family: lora;
+    font-style: bold;
+}
+.username
+{
+    font-family: lora;
+    font-size: 16px;
+}
+
+.timeLastPosted
+{
+    font-family: lora;
+    font-size: 10px;
+}
+
+.commentContent
+{
+    font-family: lora;
+    font-size: 14px;
+}
+
+.expertVerificationButton
+{
+  background-color: white;
+  color: red;
+  border-color: red;
+}
