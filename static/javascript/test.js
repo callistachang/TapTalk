@@ -28,6 +28,16 @@ $(function(){
     });
   });
 
+  $("#left-menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("left-toggled");
+  });
+
+  $("#right-menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("right-toggled");
+  });
+
 $(function(){
   $('#isTaptalkOn').click(function() {
     $(".comments").toggle(this.checked);
