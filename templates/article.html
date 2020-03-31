@@ -49,13 +49,13 @@
         <div class="row" style="padding: 0px; width: 100%; margin: auto">
             <div class="col-4" style="padding: 0px;">
                 <img src="{% static 'images/icons/Circle2.png' %}" class="tapTalkCommentInterface commentIcon" style="height: 15px; width: 15px; left: 0px;" />
-                <label class="tapTalkCommentInterface tapLabel" style="left: 0; font-weight: bold">1 Expert Taps</label>
+                <label class="tapTalkCommentInterface tapLabel" style="left: 0; font-weight: bold">{{ expert_comments.count }} Expert Taps</label>
             </div>
 
             <div class="col-4"></div>
             
             <div class="col-4" style="padding: 0px;">
-                <label class="tapLabel" style="font-weight: bold;">3 Public Taps</label>
+                <label class="tapLabel" style="font-weight: bold;">{{ user_comments.count|add:1 }} Public Taps</label>
                 <img src="{% static 'images/icons/Circle1.png' %}"  class="commentIcon" />
             </div>
         </div> 
@@ -173,8 +173,38 @@
             </div>
             
             <div class="numOfTaps">
-                <label id="numOfUserComments">{{ user_comments.count }}</label> USERS TAP ON THIS PARAGRAPH
+                <label id="numOfUserComments">{{ user_comments.count|add:1 }}</label> USERS TAP ON THIS PARAGRAPH
             </div>
+
+
+            <div class="commentContentWrapper" style="padding: 0px;">
+                <div class="NeedBorders commentLabel">
+                     <b class="username">
+                         Amy Lim <span class="colored">(Top Tapper)</span>
+                     </b>
+                     &nbsp;
+                     <b class="timeLastPosted">
+                         {{ user_comments.0.date_posted }}
+                     </b>
+                         &nbsp;
+                 </div>
+ 
+                 <div class="NeedBorders commentContent">
+                    Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip. Sea lettuce lettuce water chestnut eggplant winter purslane fennel azuki bean earthnut pea sierra leone bologi leek soko chicory celtuce parsley jícama salsify.
+                </div>
+ 
+                 <div class="commentControlPanel">
+                  <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
+                     <b class="numOfUpvotes">
+                         51
+                     </b>
+                     &nbsp;
+                  <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
+                 </div>
+             </div>
+
+
+
 
             {% for comment in user_comments %}
             
