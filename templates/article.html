@@ -64,6 +64,7 @@
 
     <div class="taptalkOn">
 
+        <!-- Borders -->
         <div class="row" style="padding: 0px;">
             <div class="comments col" style="padding: 0px;">
                 <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
@@ -102,15 +103,7 @@
 
     <hr>
 
-    <div class="text-center">
-        <p>Post comment:</p>
 
-        <form action="{% url 'post_comment' article.id %}" method="post">
-            {% csrf_token %}
-            <input type="text" name="Comment">
-            <input type="submit" name="Submit">
-        </form>
-    </div>
 
     <!--framework for the Expert Comments-->
     <!--wrapper for the Expert Comments panel-->
@@ -122,6 +115,16 @@
         
                 <div class="numOfTaps">
                     <label id="numOfExpertComments">{{ expert_comments.count }}</label> EXPERT TAPS ON THIS PARAGRAPH
+                </div>
+
+                <div class="text-center">
+                    <p>Post comment:</p>
+            
+                    <form action="{% url 'post_comment' article.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="Comment">
+                        <input type="submit" name="Submit">
+                    </form>
                 </div>
 
                 <ul>
