@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Basic HTML File</title>
+            <!-- JS files: jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!--CSS file for panels-->
+    <link rel="stylesheet" href="../css/generalCss/panel.css">
+    <link rel="stylesheet" href="../css/test.css">
+    <link rel="stylesheet" href="../css/generalCss/button.css">
+    <link href="../css/slide-out-panel.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS file -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--JQuery -->
+    <script src="../javascript/test.js"></script>
+    <link href="../css/article.css" rel="stylesheet" />
+</head>
+
+<body class="articleBody">
+    <div class="tutorialOverlay">
+        <div class="tutorialPopupBox container">
+            <div class="row">
+            <div class="col" style="padding: 0px;">
+                <img src="../images/GreyLine.png" class="leftLine lineInTheMiddle" />
+                <input type="image" src="../images/icons/Circle2.png" class="tutorialIcon leftIcon callComment" style="position: absolute; left: 50%;" />
+                <input type="image" src="../images/icons/Circle2.png" class="tutorialIcon leftIcon callComment" style="position: absolute; left: 50%; top: 30px;" />
+                <input type="image" src="../images/icons/Circle2.png" class="tutorialIcon leftIcon callComment" style="position: absolute; left: 50%; top: 60px" />
+            </div>
+            <div class="align-items-center col-10">
+                <h3 style="font-size: 24px; font-family: Arial; color: red;">
+                    <b>
+                        TapTalk
+                    </b>
+                </h3>
+
+                <h4 >
+                    <b style="font-size: 16px; font-family: Arial; color: black;">
+                        Discussions made better
+                    </b>
+                 </h4>
+
+                <p class="tutorialText" style="font-size: 14px; font-family: Arial; color: black">
+                    Check what the verified experts and public are saying.
+                    <br />
+                    Click Taps <img src="../images/icons/Circle2.png" class="tutorialIcon leftIcon" /> on the <b style="color: red;" class="leftIcon">left</b> to view <b style="color: red;" class="leftIcon">Expert Comments</b>.
+                    <br />
+                    Click Taps <img src="../images/icons/Circle1.png" class="tutorialIcon rightIcon" /> on the <b style="color: red;" class="rightIcon">right</b> to view <b style="color: red;" class="rightIcon">User Comments</b>.
+                </p>
+            </div>
+            <div class="col" style="padding: 0px;">
+                    <img src="../images/GreyLine.png" class="rightLine lineInTheMiddle" />
+                    <input value="User Comment" type="image" src="../images/icons/Circle1.png" class="tutorialIcon rightIcon callComment" style="position: absolute; left: 50%;" />
+                    <input value="User Comment" type="image" src="../images/icons/Circle1.png" class="tutorialIcon rightIcon callComment" style="position: absolute; left: 50%; top: 30px;" />
+                    <input value="User Comment" type="image" src="../images/icons/Circle1.png" class="tutorialIcon rightIcon callComment" style="position: absolute; left: 50%; top: 60px;" />
+            </div>
+            </div>
+
+            <div class="row">
+                <button id="closeTaptalkTutorialButton" class="roundButton">Close</button><button id="doNotShowTapTalkTutorialButton" class="roundButton">Do Not Show Again</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

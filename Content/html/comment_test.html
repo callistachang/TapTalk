@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Basic HTML File</title>
+        <!-- Bootstrap CSS file -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
+    <!-- JS files: jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!--Jian Hao's CSS script-->
+    <link rel="stylesheet" type="text/css" href="../css/generalCss/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../css/generalCss/panel.css" />
+    <link rel="stylesheet" type="text/css" href="../css/generalCss/sliderComponent.css" />
+    <link rel="stylesheet" type="text/css" href="../css/topNavBar/mainNavBar.css" />
+    <link rel="stylesheet" type="text/css" href="../css/topNavBar/sidePanelMenu.css" />
+    <link rel="stylesheet" type="text/css" href="../css/commentCss/commentPanel.css" />
+    <link rel="stylesheet" type="text/css" href="../css/test.css" />
+    <link rel="stylesheet" type="text/css" href="../css/article.css" />
+    <link rel="stylesheet" type="text/css" href="../css/generalCss/button.css" />
+    <script type="text/javascript" src="../javascript/test.js"></script>
+    <script type="text/javascript" src="../javascript/openPanel.js"></script>
+
+</head>
+
+<body>
+    <!--framework for the Expert Comments-->
+    <!--wrapper for the Expert Comments panel-->
+    <div class="sidePanel panelWrapper" id="expertCommentsPanelWrapper" style="padding: 0px;">
+        <div class="sidePanel backdrop" id="transparentEffectExpert"></div>
+        <!--Establish the internal workings of the comments-->
+        <div id="expertCommentsPanel" style="padding: 0px;">
+            <div class="backdrop" style="height: 25%">
+
+            </div>
+            
+            <div class="numOfTaps">
+                <label id="numOfExpertComments">2</label> EXPERT TAP ON THIS PARAGRAPH
+            </div>
+            
+            <div class="commentContentWrapper" style="padding: 0px;">
+               <div class="commentLabel">
+                    <b class="username">
+                        Username
+                    </b>
+                    &nbsp;
+                    <b class="timeLastPosted">
+                        Time since last posted
+                    </b>
+                        &nbsp;
+                </div>
+
+                <div class="commentContent">
+                    Expert Comment
+                </div>
+
+                <div class="commentControlPanel">
+                    <input class="squareIcon" src="../images/icons/UpVote.png" type="image" value="Up Vote" />
+                    <b class="numOfUpvotes">
+
+                    </b>
+                    &nbsp;
+                    <input class="squareIcon" src="../images/icons/Circle3.png" type="image"  value="Reply" />Reply
+                    &nbsp;
+                    <input class="roundButton expertVerificationButton" type="button" value="Verify Expert Status" />
+                </div>
+            </div>
+        </div>
+        </div>
+
+    <div class="tempTest">
+        <input id="OpenExpertButton" type="button" value="Open Expert" />
+        <input id="OpenUserButton" type="button" value="Open User" />
+    </div>
+
+    <!--framework for the User Comments-->
+    <!--wrapper for the User Comments panel-->
+    <div class="sidePanel panelWrapper" id="userCommentsPanelWrapper" style="padding: 0px;">
+        <div class="sidePanel backdrop" id="transparentEffectUser"></div>
+        <!--Establish the internal workings of the comments-->
+        <div id="userCommentsPanel" style="padding: 0px;">
+            <div class="backdrop" style="height: 25%">
+
+            </div>
+            
+            <div class="numOfTaps">
+                <label id="numOfUserComments">2</label> USERS TAP ON THIS PARAGRAPH
+            </div>
+            
+            <div class="commentContentWrapper" style="padding: 0px;">
+               <div class="commentLabel">
+                    <b class="username">
+                        Username
+                    </b>
+                    &nbsp;
+                    <b class="timeLastPosted">
+                        Time since last posted
+                    </b>
+                        &nbsp;
+                </div>
+
+                <div class="commentContent">
+                   User Comment
+                </div>
+
+                <div class="commentControlPanel">
+                    <input class="Upvote" type="button" value="Up Vote" />
+                    <b>
+                        Number of Votes
+                    </b>
+                    &nbsp;
+                    <input class="Reply" type="button" value="Reply" />
+                    &nbsp;
+                    <input class="Verify Expert Status" type="button" value="Verify Expert Status" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
