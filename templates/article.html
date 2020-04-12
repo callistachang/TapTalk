@@ -14,9 +14,9 @@
 
         <!-- Metadata -->
         <div style="padding: 0px; width: 100%;">
-            <div style="padding: 0px; float: left;"><img class="squareIcon" src="{% static 'images/icons/views.png' %}" alt="num of views"><label class="articleStatisticDataLabel">5 MIN</label></div>
-            <div style="padding: 0px; float: right; padding-left: 10px"><img class="squareIcon" src="{% static 'images/icons/eyes.png' %}" alt="num of views"><label class="articleStatisticDataLabel">1K</label></div>
-            <div style="padding: 0px; float: right;"><img class="squareIcon" src="{% static 'images/icons/arrow.png' %}" alt="num of shares"><label class="articleStatisticDataLabel">692</label></div>
+            <div style="padding: 0px; float: left;"><img class="panelIcon" src="{% static 'images/icons/views.png' %}" alt="num of views"><label class="articleStatisticDataLabel">5 MIN</label></div>
+            <div style="padding: 0px; float: right; padding-left: 10px"><img class="panelIcon" src="{% static 'images/icons/eyes.png' %}" alt="num of views"><label class="articleStatisticDataLabel">1K</label></div>
+            <div style="padding: 0px; float: right;"><img class="panelIcon" src="{% static 'images/icons/arrow.png' %}" alt="num of shares"><label class="articleStatisticDataLabel">692</label></div>
         </div>
 
         <hr>
@@ -48,7 +48,7 @@
         <!-- Expert and Public Taps -->
         <div class="row" style="padding: 0px; width: 100%; margin: auto">
             <div class="col-4" style="padding: 0px;">
-                <img src="{% static 'images/icons/Circle2.png' %}" class="tapTalkCommentInterface commentIcon" style="height: 15px; width: 15px; left: 0px;" />
+                <img src="{% static 'images/icons/Circle2.png' %}" class="tapTalkCommentInterface panelIcon" style="height: 15px; width: 15px; left: 0px;" />
                 <label class="tapTalkCommentInterface tapLabel" style="left: 0; font-weight: bold">{{ expert_comments.count }} Expert Taps</label>
             </div>
 
@@ -56,7 +56,7 @@
             
             <div class="col-4" style="padding: 0px;">
                 <label class="tapLabel" style="font-weight: bold;">{{ user_comments.count|add:1 }} Public Taps</label>
-                <img src="{% static 'images/icons/Circle1.png' %}"  class="commentIcon" />
+                <img src="{% static 'images/icons/Circle1.png' %}"  class="panelIcon" />
             </div>
         </div> 
         
@@ -82,7 +82,7 @@
         <div class="row" style="padding: 0px;">
             <div class="comments col" style="padding: 0px;">
                 <input id="OpenExpertButton" value="Expert Comment" type="image" src="{% static 'images/icons/Circle2.png' %}" class="tapTalkCommentInterface commentIcon callComment" style="position: absolute; left: 29%; top: 3%" />
-                <img id="expert-toggle" src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+                <img id="expert-toggle" src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" style="z-index:-1" />
             </div>
 
             <div class="align-items-center col-10 articleSection">
@@ -93,7 +93,7 @@
             </div>
 
             <div class="comments col" style="padding: 0px;">
-                <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" />
+                <img src="{% static 'images/GreyLine.png' %}" class="lineInTheMiddle" style="z-index:-1" />
                 <input id="OpenUserButton" value="User Comment" type="image" src="{% static 'images/icons/Circle1.png' %}" class="tapTalkCommentInterface commentIcon callComment" style="position: absolute; left: 27%; top: 3%" />
             </div>
         </div>   
@@ -107,16 +107,16 @@
 
     <!--framework for the Expert Comments-->
     <!--wrapper for the Expert Comments panel-->
-    <div class="NeedBorders sidePanel panelWrapper" id="expertCommentsPanelWrapper" style="padding: 0px;">
-        <div class="NeedBorders sidePanel backdrop" id="transparentEffectExpert" style="z-index: -10;"></div>
+    <div class="NeedBorders sidePanel panelWrapper" id="expertCommentsPanelWrapper">
+        <div class="NeedBorders sidePanel backdrop" id="transparentEffectExpert" ></div>
     <!--Establish the internal workings of the comments-->
-            <div id="NeedBorders expertCommentsPanel" style="padding: 0px;">
-                <div class="backdrop" style="height: 25%"></div>
-        
+            <div class="NeedBorders" id="expertCommentsPanel">
+                &nbsp;
+                &nbsp;
                 <div class="numOfTaps">
                     <label id="numOfExpertComments">{{ expert_comments.count }}</label> EXPERT TAPS ON THIS PARAGRAPH
                 </div>
-
+                <div class="lineDivider" style="width: 90%; border-bottom-style: outset;"></div>
                 <div class="text-center">
                     <p>Post comment:</p>
             
@@ -126,39 +126,44 @@
                         <input type="submit" name="Submit">
                     </form>
                 </div>
-
-                <ul>
+                &nbsp;
+                <div class="lineDivider" style="width: 90%; border-bottom-style: outset;"></div>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <ul class="listOfComments">
                         
                     {% for comment in expert_comments %}
-                        <div class="NeedBorders commentContentWrapper" style="padding: 0px;">
+                        <div class="NeedBorders commentContentWrapper">
                             <div class="commentLabel">
                                 <b class="username">
                                     {{ comment.creator }}
                                 </b>
-                                &nbsp;
+                            </div>
+                            <div class="commentLabel">
                                 <b class="timeLastPosted">
                                     {{ comment.date_posted }}
                                 </b>
-                                    &nbsp;
                             </div>
                     
                             <div class="NeedBorders commentContent">
                                 {{ comment.content }}
                             </div>
-                    
+                            &nbsp;
                             <div class="commentControlPanel">
-                                <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
+                                <input class="panelIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
                                 <b class="numOfUpvotes" style="color: red;">
                                     {{ comment.num_votes }}
                                 </b>
                                 &nbsp;
-                                <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
+                                <input class="panelIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
                                 &nbsp;
-                                <input id="redirectExpert" class="roundButton expertVerificationButton" type="button" value="Verify Expert Status" />
+                                <input id="redirectExpert" class="expertVerificationButton" type="button" value="Verify Expert Status" />
                             </div>
 
                             <br>
                         </div>
+                    <div class="lineDivider" style="width: 95%; border-bottom-style: double;"></div>
                     {% endfor %}
 
                 </ul>
@@ -167,29 +172,30 @@
 
     <!--framework for the User Comments-->
     <!--wrapper for the User Comments panel-->
-    <div class="NeedBorders sidePanel panelWrapper" id="userCommentsPanelWrapper" style="padding: 0px;">
-        <div class="NeedBorders sidePanel backdrop" id="transparentEffectUser" style="z-index: -10;"></div>
+    <div class="NeedBorders sidePanel panelWrapper" id="userCommentsPanelWrapper">
         <!--Establish the internal workings of the comments-->
-        <div id="NeedBorders userCommentsPanel" style="padding: 0px;">
-            <div class="backdrop" style="height: 25%">
-
-            </div>
-            
+        <div class="NeedBorders" id="userCommentsPanel">
+            &nbsp;
+            &nbsp;
             <div class="numOfTaps">
                 <label id="numOfUserComments">{{ user_comments.count|add:1 }}</label> USERS TAP ON THIS PARAGRAPH
             </div>
+            <div class="lineDivider" style="width: 90%; border-bottom-style: outset;"></div>
+            &nbsp;
+            &nbsp;
+            &nbsp;
 
-
-            <div class="commentContentWrapper" style="padding: 0px;">
+            <ul class="listOfComments">
+            <div class="commentContentWrapper">
                 <div class="NeedBorders commentLabel">
-                     <b class="username">
+                    <b class="username">
                          Amy Lim <span class="colored">(Top Tapper)</span>
                      </b>
-                     &nbsp;
+                </div>
+                <div class="NeedBorders commentLabel">
                      <b class="timeLastPosted">
                          {{ user_comments.0.date_posted }}
                      </b>
-                         &nbsp;
                  </div>
  
                  <div class="NeedBorders commentContent">
@@ -197,26 +203,27 @@
                 </div>
  
                  <div class="commentControlPanel">
-                  <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
+                  <input class="panelIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
                      <b class="numOfUpvotes">
                          51
                      </b>
                      &nbsp;
-                  <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
+                  <input class="panelIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
                  </div>
              </div>
 
 
-
+            <div class="lineDivider" style="width: 95%; border-bottom-style: double;"></div>
 
             {% for comment in user_comments %}
-            
+                        &nbsp;
             <div class="commentContentWrapper" style="padding: 0px;">
                <div class="NeedBorders commentLabel">
                     <b class="username">
                         {{ comment.creator }}
                     </b>
-                    &nbsp;
+                </div>
+               <div class="NeedBorders commentLabel">          
                     <b class="timeLastPosted">
                         {{ comment.date_posted }}
                     </b>
@@ -228,17 +235,17 @@
                 </div>
 
                 <div class="commentControlPanel">
-                 <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
+                 <input class="panelIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
                     <b class="numOfUpvotes">
                         {{ comment.num_votes }}
                     </b>
                     &nbsp;
-                 <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
+                 <input class="panelIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
                 </div>
             </div>
-
+            <div class="lineDivider" style="width: 95%; border-bottom-style: double;"></div>
             {% endfor %}
-
+        </ul>
         </div>
     </div>
 
@@ -291,7 +298,7 @@
     
     
     {% for comment in user_comments %}
-
+            &nbsp;
         <div class="commentContentWrapper" style="padding: 0px;">
 
             <div class="NeedBorders commentLabel">
@@ -310,12 +317,12 @@
             </div>
 
             <div class="commentControlPanel">
-                <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
+                <input class="panelIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
                 <b class="numOfUpvotes">
                     {{ comment.num_votes }}
                 </b>
                 &nbsp;
-                <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
+                <input class="panelIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
             </div>
 
             <br>
@@ -347,12 +354,12 @@
         </div>
 
         <div class="commentControlPanel">
-            <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
+            <input class="commentIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
             <b class="numOfUpvotes">
                 50
             </b>
             &nbsp;
-            <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
+            <input class="commentIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
         </div>
     </div>
 
@@ -373,12 +380,12 @@
         </div>
 
         <div class="commentControlPanel">
-            <input class="squareIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
+            <input class="commentIcon" src="{% static 'images/icons/UpVote.png' %}" type="image" value="Up Vote" />
             <b class="numOfUpvotes" style="color: red">
                 -1000
             </b>
             &nbsp;
-            <input class="squareIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
+            <input class="commentIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"  value="Reply" />Reply
         </div>
 
     </div> -->

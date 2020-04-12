@@ -66,7 +66,7 @@ function closeSideMenu()
 
 function openExpertCommentsPanel() {
     $("#expertCommentsPanelWrapper").css("left", "0px");
-    $("#transparentEffectExpert").css("left", "350px");
+    $("#transparentEffectExpert").css("left", "300px");
 }
 
 function closeExpertCommentsPanel() {
@@ -76,7 +76,7 @@ function closeExpertCommentsPanel() {
 
 function openUserCommentsPanel() {
     $("#userCommentsPanelWrapper").css("right", "0px");
-    $("#transparentEffectUser").css("right", "350px");
+    $("#transparentEffectUser").css("right", "300px");
 }
 
 function closeUserCommentsPanel() {

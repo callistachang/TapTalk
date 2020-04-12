@@ -2,52 +2,78 @@
 #expertCommentsPanelWrapper {
     left: -350px;
     top: 10%;
-    height: 90%;
+    height: 100%;
+    border-top-style: ridge;
+    border-right-style: groove;
+    border-color: #D72F1D;
+    border-width: 3px;
+    padding:0px;
+    width: 300px;
 }
 
 #expertCommentsPanel {
     float: left;
     height: 100%;
-    width: 300px;;
+    width: 300px;
     background-color: white;
-    overflow-y: auto; 
+    overflow-y: auto;
 }
 
 #transparentEffectExpert {
     width: 50px;
     left: -50px;
     z-index: -10;
+    border-top-style: outset;
+    border-right-style: solid;
+    border-color: #D72F1D;
+    border-width: 3px;
 }
 
 /* For the sidepanel that contains expert comments*/
 #userCommentsPanelWrapper {
     top: 10%;
-    height: 90%;
+    height: 100%;
     right: -350px;
+    border-top-style: ridge;
+    border-left-style: groove;
+    border-color: #D72F1D;
+    border-width: 3px;
+    padding:0px;
+    width: 300px;
+        overflow-y: auto;
 }
 
 #userCommentsPanel {
     float: right;
     height: 100%;
-    width: 300px;;
+    width: 295px;
     background-color: white;
-    overflow-y: auto; 
 }
 
 #transparentEffectUser {
     width: 50px;
     right: -50px;
     z-index: -10;
+    border-top-style: outset;
+    border-left-style: solid;
+    border-color: #D72F1D;
+    border-width: 3px;
+}
+
+.listOfComments
+{
+    width: 90%;
+    margin: auto;
 }
 
 .panelWrapper {
-      width: 350px;
+      width: 300px;
 }
 
-.inner CommentWrapper
-{
-      height: 100%;
-}
+//.inner CommentWrapper
+//{
+//      height: 100%;
+//}
 
 .numOfTaps
 {
@@ -55,17 +81,22 @@
     font-size: 15px;
     font-family: lato;
     font-style: bold;
+    width: 270px;
+    margin: auto;
 }
 .username
 {
+
     font-family: lato;
     font-size: 16px;
+    font-weight: bold;
 }
 
 .timeLastPosted
 {
     font-family: lato;
     font-size: 10px;
+    font-style: italic;
 }
 
 .commentContent
@@ -76,16 +107,40 @@
 
 .expertVerificationButton
 {
-  background-color: white;
   color: red;
-  border-color: red;
+  border-color: #D72F1D;
+  font-family: lota;
+  font-size: 14px;
 }
 
 .backdrop
 {
-    //background-image: url("../../images/background/commentBackdropPlaceholder.png");
-    background-color: black;  
-    opacity: 0.36;
+    //background-image: url("..\..\images\background\backdrop.png") repeat 0 0;
+    background-color: rgba(49, 49, 49, 0.72);
     top: 10%;
-    height: 90%;
+    height: 100%;
+}
+
+.numOfTaps
+{
+    font-family: lato;
+    font-weight: bold;
+    font-size: 10;
+    color: #D72F1D;
+    margin: auto;
+}
+
+.lineDivider
+{
+    height: 1px;
+    border-bottom-size: 3px;
+    border-bottom-color: #909090;
+    margin: auto;
+}
+
+.listOfComments
+{
+    padding: 0px;
+    width: 85%;
+    margin: auto;
 }

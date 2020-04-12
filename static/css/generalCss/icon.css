@@ -5,6 +5,11 @@
     width: 25px;
 }
 
+.panelIcon {
+    height: 15px;
+    width: 15px;
+}
+
 .rectangleIcon {
     height: 65px;
     width: 300px;
