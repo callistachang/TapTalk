@@ -115,7 +115,6 @@
 
 .backdrop
 {
-    //background-image: url("..\..\images\background\backdrop.png") repeat 0 0;
     background-color: rgba(49, 49, 49, 0.72);
     top: 10%;
     height: 100%;
