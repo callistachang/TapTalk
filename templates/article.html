@@ -6,7 +6,9 @@
 
 {% if messages %}
 <div class="alert alert-info" role="alert">
-    {{ messages.0 }}
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
 </div>
 {% endif %}
 
@@ -242,8 +244,10 @@
                     </div>
 
                     <div class="commentControlPanel">
-                        <input class="panelIcon" src="{% static 'images/icons/UpVote.png' %}" type="image"
-                            value="Up Vote" />
+                        <a href="{% url 'upvote' article.id comment.id %}">
+                            <input class="panelIcon" src="{% static 'images/icons/UpVote.png' %}" type="image"
+                                value="Up Vote" />
+                        </a>
                         <b class="numOfUpvotes">
                             51
                         </b>
@@ -276,8 +280,10 @@
                     </div>
 
                     <div class="commentControlPanel">
-                        <input class="panelIcon" src="{% static 'images/icons/UpVote.png' %}" type="image"
-                            value="Up Vote" />
+                        <a href="{% url 'upvote' article.id comment.id %}">
+                            <input class="panelIcon" src="{% static 'images/icons/UpVote.png' %}" type="image"
+                                value="Up Vote" />
+                        </a>
                         <b class="numOfUpvotes">
                             {{ comment.num_votes }}
                         </b>
