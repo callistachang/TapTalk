@@ -28,8 +28,7 @@ urlpatterns = [
     path('article/<int:pk>', views.ArticleView.as_view(), name='article'),
     path('article/<int:article_id>/post_comment',
          views.post_comment, name='post_comment'),
-    path('article/<int:article_id>/comment/<int:comment_id>/upvote',
-         views.upvote, name='upvote'),
+    path('comment/<int:comment_id>/upvote', views.upvote, name='upvote'),
     path('profile/<int:pk>', views.ProfileView.as_view(), name='profile'),
     path('', views.MainView.as_view(), name='main'),
 ]
