@@ -13,6 +13,7 @@ import config
 import facebook
 import requests
 
+
 class MainView(generic.ListView):
     template_name = 'main.html'
     context_object_name = 'article_list'
@@ -27,6 +28,8 @@ class MainView(generic.ListView):
         return Article.objects.all()
 
 # TODO: LinkedIn and FB integration
+
+
 class ProfileView(generic.DetailView):
     model = User
     template_name = 'profile.html'
@@ -39,6 +42,7 @@ class ProfileView(generic.DetailView):
 #         'article': article,
 #     }
 #     return render(request, 'article.html', context)
+
 
 class ArticleView(generic.DetailView):
     model = Article
@@ -58,10 +62,13 @@ class ArticleView(generic.DetailView):
         return context
 
 # TODO: Section is hardcoded to 1
+
+
 def post_comment(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     content = request.POST['Comment']
     user = User.objects.get(pk=request.session['user_id'])
+    # user = User.objects.get(pk='1')
     section = Section.objects.get(id=1)
     print(article, content, user)
 
@@ -79,6 +86,15 @@ def post_comment(request, article_id):
     return HttpResponseRedirect('/article/' + str(article.id))
 
 # Expert verification
+
+
+def upvote(request, article_id, comment_id):
+    comment = Comment.objects.get(pk=comment_id)
+    comment.num_votes += 1
+    comment.save()
+    return HttpResponseRedirect('/article/' + str(article_id))
+
+
 def linkedin_auth(request):
     token_params = {
         'grant_type': 'authorization_code',
@@ -89,7 +105,8 @@ def linkedin_auth(request):
     }
 
     # Get access token
-    token_request = requests.get(config.LINKEDIN_TOKEN_URL, params=token_params)
+    token_request = requests.get(
+        config.LINKEDIN_TOKEN_URL, params=token_params)
     token = token_request.json()['access_token']
 
     info_headers = {
@@ -100,7 +117,8 @@ def linkedin_auth(request):
         'projection': '(elements*(primary,type,handle~))'
     }
 
-    r = requests.get("https://api.linkedin.com/v2/recommendedJobs?q=byMember", headers=info_headers)
+    r = requests.get(
+        "https://api.linkedin.com/v2/recommendedJobs?q=byMember", headers=info_headers)
     print(r.json())
 
     # # Get email
@@ -125,6 +143,8 @@ def linkedin_auth(request):
     return HttpResponseRedirect('/article/' + str(request.session['article_id']))
 
 # Facebook verification
+
+
 def facebook_auth(request):
     token_params = {
         'client_id': config.FACEBOOK_APP_ID,
@@ -134,7 +154,8 @@ def facebook_auth(request):
     }
 
     # Get access token
-    token_request = requests.get(config.FACEBOOK_TOKEN_URL, params=token_params)
+    token_request = requests.get(
+        config.FACEBOOK_TOKEN_URL, params=token_params)
     token = token_request.json()['access_token']
 
     graph = facebook.GraphAPI(access_token=token, version="2.12")
@@ -143,7 +164,8 @@ def facebook_auth(request):
     try:
         user = CommonUser.objects.get(facebook_id=info['id'])
     except:
-        user = CommonUser.objects.create(name=info['name'], facebook_id=info['id'])
+        user = CommonUser.objects.create(
+            name=info['name'], facebook_id=info['id'])
 
     request.session['user_name'] = user.name
     request.session['user_id'] = user.id

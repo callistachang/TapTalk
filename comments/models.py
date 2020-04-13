@@ -27,7 +27,6 @@ def is_comment_valid(content):
     else:
         return True
 
-# TODO: Section and parent_comment is hardcoded
 class CommentManager(models.Manager):
     def create_comment(self, content, section, creator, parent_comment=None):
         # Comment passes the Perspective API check
