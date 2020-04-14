@@ -148,7 +148,7 @@
                 <form action="{% url 'post_comment' article.id %}" method="post">
                     {% csrf_token %}
                     <input type="text" name="Comment">
-                    <input type="submit" name="Submit">
+                    <input class="submitButton" type="submit" name="Submit">
                 </form>
             </div>
             &nbsp;
@@ -218,7 +218,7 @@
                 <form action="{% url 'post_comment' article.id %}" method="post">
                     {% csrf_token %}
                     <input type="text" name="Comment">
-                    <input type="submit" name="Submit">
+                    <input class="submitButton" type="submit" name="Submit">
                 </form>
             </div>
             &nbsp;
