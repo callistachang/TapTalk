@@ -204,6 +204,7 @@
     <!--wrapper for the User Comments panel-->
     <div class="NeedBorders sidePanel panelWrapper" id="userCommentsPanelWrapper">
         <!--Establish the internal workings of the comments-->
+
         <div class="NeedBorders" id="userCommentsPanel">
             &nbsp;
             &nbsp;
@@ -225,42 +226,74 @@
 
             <ul class="listOfComments">
 
-                <div class="lineDivider" style="width: 95%; border-bottom-style: double;"></div>
-
-                {% for comment in user_comments %}
-                &nbsp;
-                <div class="commentContentWrapper" style="padding: 0px;">
+                <div class="commentContentWrapper">
                     <div class="NeedBorders commentLabel">
                         <b class="username">
-                            {{ comment.creator }}
+                            Amy Lim <span class="colored">(Top Tapper)</span>
                         </b>
                     </div>
                     <div class="NeedBorders commentLabel">
                         <b class="timeLastPosted">
-                            {{ comment.date_posted }}
+                            {{ user_comments.0.date_posted }}
                         </b>
-                        &nbsp;
                     </div>
 
                     <div class="NeedBorders commentContent">
-                        {{ comment.content }}
+                        Dear Millennials , don’t lose heart. Every generation will, at one time or another go through
+                        trials and tribulations in its lifetime . You will come out of it stronger and more ready to
+                        face future crisis with tenacity and strength. We are in this COVIT 19 pandemic crisis together.
+                        Focus your energy on overcoming this difficult time . God Bless. #Sg United. #Sg Stay Safe
                     </div>
 
                     <div class="commentControlPanel">
-                        <a href="{% url 'upvote' article.id comment.id %}">
+                        <a href="{% url 'upvote' article.id 2 %}">
                             <input class="panelIcon" src="{% static 'images/icons/UpVote.png' %}" type="image"
                                 value="Up Vote" />
                         </a>
                         <b class="numOfUpvotes">
-                            {{ comment.num_votes }}
+                            51
                         </b>
                         &nbsp;
                         <input class="panelIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"
                             value="Reply" />Reply
                     </div>
-                </div>
-                <div class="lineDivider" style="width: 95%; border-bottom-style: double;"></div>
-                {% endfor %}
+
+                    <div class="lineDivider" style="width: 95%; border-bottom-style: double;"></div>
+
+                    {% for comment in user_comments %}
+                    &nbsp;
+                    <div class="commentContentWrapper" style="padding: 0px;">
+                        <div class="NeedBorders commentLabel">
+                            <b class="username">
+                                {{ comment.creator }}
+                            </b>
+                        </div>
+                        <div class="NeedBorders commentLabel">
+                            <b class="timeLastPosted">
+                                {{ comment.date_posted }}
+                            </b>
+                            &nbsp;
+                        </div>
+
+                        <div class="NeedBorders commentContent">
+                            {{ comment.content }}
+                        </div>
+
+                        <div class="commentControlPanel">
+                            <a href="{% url 'upvote' article.id comment.id %}">
+                                <input class="panelIcon" src="{% static 'images/icons/UpVote.png' %}" type="image"
+                                    value="Up Vote" />
+                            </a>
+                            <b class="numOfUpvotes">
+                                {{ comment.num_votes }}
+                            </b>
+                            &nbsp;
+                            <input class="panelIcon" src="{% static 'images/icons/Circle3.png' %}" type="image"
+                                value="Reply" />Reply
+                        </div>
+                    </div>
+                    <div class="lineDivider" style="width: 95%; border-bottom-style: double;"></div>
+                    {% endfor %}
             </ul>
         </div>
     </div>
