@@ -126,24 +126,28 @@ def linkedin_auth(request):
         "https://api.linkedin.com/v2/recommendedJobs?q=byMember", headers=info_headers)
     print(r.json())
 
-    # # Get email
-    # email_request = requests.get(config.LINKEDIN_GET_EMAIL_URL, headers=info_headers, params=email_params)
-    # email = email_request.json()['elements'][0]['handle~']['emailAddress']
+    # Get email
+    email_request = requests.get(
+        config.LINKEDIN_GET_EMAIL_URL, headers=info_headers, params=email_params)
+    email = email_request.json()['elements'][0]['handle~']['emailAddress']
 
-    # # Find out if they already exist in the database.
-    # # If they are, retrieve the data.
-    # # If they aren't, add them to the database.
-    # try:
-    #     expert = Expert.objects.get(email=email)
-    # except:
-    #     # Get name
-    #     name_request = requests.get(config.LINKEDIN_GET_NAME_URL, headers=info_headers)
-    #     name = name_request.json()['localizedFirstName'] + ' ' + name_request.json()['localizedLastName']
-    #     # Create new expert
-    #     expert = Expert.objects.create(email=email, name=name, expert_title="Hardcoded Expert Title")
+    # Find out if they already exist in the database.
+    # If they are, retrieve the data.
+    # If they aren't, add them to the database.
+    try:
+        expert = Expert.objects.get(email=email)
+    except:
+        # Get name
+        name_request = requests.get(
+            config.LINKEDIN_GET_NAME_URL, headers=info_headers)
+        name = name_request.json()['localizedFirstName'] + \
+            ' ' + name_request.json()['localizedLastName']
+        # Create new expert
+        expert = Expert.objects.create(
+            email=email, name=name, expert_title="Hardcoded Expert Title")
 
-    # request.session['user_name'] = expert.name
-    # request.session['user_id'] = expert.id
+    request.session['user_name'] = expert.name
+    request.session['user_id'] = expert.id
 
     return HttpResponseRedirect('/article/' + str(request.session['article_id']))
 
