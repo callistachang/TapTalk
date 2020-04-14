@@ -143,3 +143,19 @@
     width: 85%;
     margin: auto;
 }
+
+.submitButton
+{
+  border: none;
+  color: red;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 12px;
+  border-style: ridge;
+  font-family: lota;
+  background-color: white;
+}
