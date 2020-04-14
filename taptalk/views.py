@@ -90,7 +90,7 @@ def post_comment(request, article_id):
 
 def upvote(request, article_id, comment_id):
     comment = Comment.objects.get(pk=comment_id)
-    messages.success(request, 'The comment was upvoted successfully!')
+    messages.info(request, 'The comment was upvoted successfully!')
 
     # article = Article.sections.
 
