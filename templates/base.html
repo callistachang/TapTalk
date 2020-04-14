@@ -2,120 +2,128 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Title -->
-    <title>TapTalk</title>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- Title -->
+  <title>TapTalk</title>
 
-    <!-- Bootstrap JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <!-- Font -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lora" />
-    <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Lato:400,900'>
+  <!-- Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
 
-    <!-- Other CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/generalCss/icon.css' %}">
-    <link rel="stylesheet" type="text/css"  href="{% static 'css/generalCss/panel.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/generalCss/sliderComponent.css' %}">
+  <!-- Font -->
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lora" />
+  <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Lato:400,900'>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/topNavBar/mainNavBar.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/topNavBar/sidePanelMenu.css' %}">
+  <!-- Other CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/generalCss/icon.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/generalCss/panel.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/generalCss/sliderComponent.css' %}">
 
-    <!-- My CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/tempsidebar.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/general.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/topNavBar/mainNavBar.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/topNavBar/sidePanelMenu.css' %}">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/commentCss/commentPanel.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/article.css' %}">
+  <!-- My CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/tempsidebar.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/general.css' %}">
 
-    <!-- Other JavaScript -->
-    <script type="text/javascript" src="{% static 'javascript/openPanel.js' %}"></script>
-    <script src="{% static 'javascript/test.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/commentCss/commentPanel.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/article.css' %}">
 
-  </head>
-  <body>
-    <nav class="navbar navbar-expand navbar-dark fixed-top"> 
-      <a href="#menu-toggle" id="menu-toggle" class="navbar-brand">
-        <span class="navbar-toggler-icon"></span>
-      </a> 
-      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle Navigation"> 
+  <!-- Other JavaScript -->
+  <script type="text/javascript" src="{% static 'javascript/openPanel.js' %}"></script>
+  <script src="{% static 'javascript/test.js' %}"></script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand navbar-dark fixed-top">
+    <a href="#menu-toggle" id="menu-toggle" class="navbar-brand">
+      <span class="navbar-toggler-icon"></span>
+    </a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle Navigation"> 
         <span class="navbar-toggler-icon"></span> 
       </button> -->
 
-      <a class="navbar-brand mb-0 h1" href="/" style="color: whitesmoke;">TapTalk!</a>
+    <a class="navbar-brand mb-0 h1" href="/" style="color: whitesmoke;">TapTalk!</a>
 
-      <!-- Toggle TapTalk! -->
-      <div class="switch tapTalkSwitchWrapper">
-        <label>
-          <input type="checkbox" id="isTaptalkOn" checked> 
-          <span class="slider round"></span>
-        </label>
-      </div>
-    </nav>
+    <!-- Toggle TapTalk! -->
+    <div class="switch tapTalkSwitchWrapper">
+      <label>
+        <input type="checkbox" id="isTaptalkOn" checked>
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </nav>
 
-    <div id="wrapper">
+  <div id="wrapper">
 
-      <!-- Sidebar -->
-      <div id="sidebar-wrapper">
-          <ul class="sidebar-nav">
-            <!-- Today Logo -->
-            <br>
-            <img src="{% static 'images/icons/Today_icon.png' %}" class="rectangleIcon" />
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <!-- Today Logo -->
+        <br>
+        <img src="{% static 'images/icons/Today_icon.png' %}" class="rectangleIcon" />
 
-            <hr>
+        <hr>
 
-            <!-- Random Tabs -->
-            <li><a href="#">Singapore</a></li>
-            <li><a href="#">World</a></li>
-            <li><a href="#">Big Read</a></li>
-            <li><a href="#">Opinion</a></li>
+        <!-- Random Tabs -->
+        <li><a href="#">Singapore</a></li>
+        <li><a href="#">World</a></li>
+        <li><a href="#">Big Read</a></li>
+        <li><a href="#">Opinion</a></li>
 
-            <hr>
+        <hr>
 
-            <!-- Logged in => Link to profile -->
-            {% if request.session.user_id %}
+        <!-- Logged in => Link to profile -->
+        {% if request.session.user_id %}
 
-              <li><a href="{% url 'profile' request.session.user_id %}">My Profile</a></li>
+        <li><a href="{% url 'profile' request.session.user_id %}">My Profile</a></li>
 
-            <!-- Not logged in => Show login buttons -->
-            {% else %}
+        <!-- Not logged in => Show login buttons -->
+        {% endif %}
 
-              <li class="colored">You are not logged in.</li>
+        <li class="colored">You are not logged in.</li>
 
-              <li>User login:</li>
-              <a href="{{ facebook_login }}">
-                <img src="{% static 'images/icons/facebook_login.png' %}" class="facebookIcon" alt="User Login">
-              </a>
+        <li>User login:</li>
+        <a href="{{ facebook_login }}">
+          <img src="{% static 'images/icons/facebook_login.png' %}" class="facebookIcon" alt="User Login">
+        </a>
 
-              <li>Expert login:</li>
-              <a href="{{ linkedin_login }}">
-                <img src="{% static 'images/icons/linkedin_login.png' %}" class="linkedinIcon" alt="Expert Login">
-              </a>
+        <li>Expert login:</li>
+        <a href="{{ linkedin_login }}">
+          <img src="{% static 'images/icons/linkedin_login.png' %}" class="linkedinIcon" alt="Expert Login">
+        </a>
 
-            {% endif %}
+      </ul>
+    </div>
 
-          </ul>
-      </div>
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <!-- <div class="container-fluid"> -->
+      {% block content %}
+      {% endblock %}
+      <!-- </div> -->
+    </div>
 
-      <!-- Page Content -->
-      <div id="page-content-wrapper">
-          <!-- <div class="container-fluid"> -->
-            {% block content %}
-            {% endblock %}
-          <!-- </div> -->
-      </div> 
+  </div>
 
-  </div> 
+</body>
 
-  </body>
 </html>
