@@ -176,7 +176,7 @@
                     </div>
                     &nbsp;
                     <div class="commentControlPanel">
-                        <a href="{% url 'upvote' comment.id %}">
+                        <a href="{% url 'upvote' article.id comment.id %}">
                             <input class="panelIcon" src="{% static 'images/icons/UpVote.png' %}" type="image"
                                 value="Up Vote" />
                         </a>
@@ -247,7 +247,7 @@
                     </div>
 
                     <div class="commentControlPanel">
-                        <a href="{% url 'upvote' comment.id %}">
+                        <a href="{% url 'upvote' article.id comment.id %}">
                             <input class="panelIcon" src="{% static 'images/icons/UpVote.png' %}" type="image"
                                 value="Up Vote" />
                         </a>

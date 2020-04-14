@@ -88,12 +88,16 @@ def post_comment(request, article_id):
 # Expert verification
 
 
-def upvote(request, comment_id):
+def upvote(request, article_id, comment_id):
     comment = Comment.objects.get(pk=comment_id)
-    article = comment.article_section.article_set.all()
+    messages.success(request, 'The comment was upvoted successfully!')
+
+    # article = Article.sections.
+
+    # article = comment.article_section.article_set.all()
     comment.num_votes += 1
     comment.save()
-    return HttpResponseRedirect('/article/' + str(article.id))
+    return HttpResponseRedirect('/article/' + '1')
 
 
 def linkedin_auth(request):
