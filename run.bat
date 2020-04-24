@@ -1,2 +1,2 @@
 @echo off
-python manage.py runserver
+py manage.py runserver
