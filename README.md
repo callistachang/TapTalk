@@ -12,9 +12,9 @@ Built with Django, and hosted on Heroku: http://tap-talk.herokuapp.com
 
 3. Make sure that [Python 3](https://www.python.org/downloads/) is installed on your machine.
 
-4. Run the server by double-clicking `run.bat`. If there is an error, try editing the file and change `py` to `python`.
+4. Run the server by double-clicking `run.bat`. If there is an error, try editing the file by changing `py` to `python`.
 
-The server should now be running on `http://127.0.0.1/8000/admin`.
+The server should now be running on `http://127.0.0.1/8000`.
 
 ### Notes
 
