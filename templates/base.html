@@ -53,18 +53,22 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand navbar-dark fixed-top">
+  <nav class="navbar navbar-expand navbar-light fixed-top">
     <a href="#menu-toggle" id="menu-toggle" class="navbar-brand">
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon icon-bar">
+      </span>
     </a>
     <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle Navigation"> 
         <span class="navbar-toggler-icon"></span> 
       </button> -->
 
-    <a class="navbar-brand mb-0 h1" href="/" style="color: whitesmoke;">TapTalk!</a>
+    <img src="{% static 'images/icons/Today_transparent.png' %}" alt="" style="width:40%">
+
+    <!-- <a class=" mb-0 h1" href="/" style="color: whitesmoke;">TapTalk!</a> -->
 
     <!-- Toggle TapTalk! -->
     <div class="switch tapTalkSwitchWrapper">
+
       <label>
         <input type="checkbox" id="isTaptalkOn" checked>
         <span class="slider round"></span>
