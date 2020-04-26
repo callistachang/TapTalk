@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 from users.models import User, CommonUser, Expert
 from sections.models import Section
+import constants
 import config
 
 import requests
@@ -17,10 +18,10 @@ def is_comment_valid(content):
     data = '{comment: {text: "' + content + \
         '"}, languages: ["en"], requestedAttributes: {TOXICITY:{}}}'
     payload = {
-        "key": config.PERSPECTIVE_API_KEY
+        "key": constants.PERSPECTIVE_API_KEY
     }
 
-    r = requests.post(config.PERSPECTIVE_API_URL,
+    r = requests.post(constants.PERSPECTIVE_API_URL,
                       headers=headers, data=data, params=payload)
 
     toxicity_score = r.json(

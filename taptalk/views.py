@@ -8,6 +8,7 @@ from articles.models import Article
 from users.models import User, Expert, CommonUser
 from comments.models import Comment
 from sections.models import Section
+import constants
 import config
 
 import facebook
@@ -20,8 +21,8 @@ class MainView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['linkedin_login'] = config.LINKEDIN_LOGIN_URL
-        context['facebook_login'] = config.FACEBOOK_LOGIN_URL
+        context['linkedin_login'] = constants.LINKEDIN_LOGIN_URL
+        context['facebook_login'] = constants.FACEBOOK_LOGIN_URL
         return context
 
     def get_queryset(self):
@@ -50,10 +51,10 @@ class ArticleView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['linkedin_login'] = config.LINKEDIN_LOGIN_URL
-        context['facebook_login'] = config.FACEBOOK_LOGIN_URL
-        context['linkedin_logo'] = config.LINKEDIN_LOGIN_LOGO
-        context['facebook_logo'] = config.FACEBOOK_LOGIN_LOGO
+        context['linkedin_login'] = constants.LINKEDIN_LOGIN_URL
+        context['facebook_login'] = constants.FACEBOOK_LOGIN_URL
+        context['linkedin_logo'] = constants.LINKEDIN_LOGIN_LOGO
+        context['facebook_logo'] = constants.FACEBOOK_LOGIN_LOGO
         context['expert_comments'] = Comment.objects.get_expert_comments()
         context['user_comments'] = Comment.objects.get_user_comments()
 
@@ -103,7 +104,7 @@ def upvote(request, article_id, comment_id):
 def linkedin_auth(request):
     token_params = {
         'grant_type': 'authorization_code',
-        'redirect_uri': config.LINKEDIN_REDIRECT_URL,
+        'redirect_uri': constants.LINKEDIN_REDIRECT_URL,
         'client_id': config.LINKEDIN_CLIENT_ID,
         'client_secret': config.LINKEDIN_CLIENT_SECRET,
         'code': request.GET['code']
@@ -111,7 +112,7 @@ def linkedin_auth(request):
 
     # Get access token
     token_request = requests.get(
-        config.LINKEDIN_TOKEN_URL, params=token_params)
+        constants.LINKEDIN_TOKEN_URL, params=token_params)
     token = token_request.json()['access_token']
 
     info_headers = {
@@ -128,7 +129,7 @@ def linkedin_auth(request):
 
     # Get email
     email_request = requests.get(
-        config.LINKEDIN_GET_EMAIL_URL, headers=info_headers, params=email_params)
+        constants.LINKEDIN_GET_EMAIL_URL, headers=info_headers, params=email_params)
     email = email_request.json()['elements'][0]['handle~']['emailAddress']
 
     # Find out if they already exist in the database.
@@ -139,7 +140,7 @@ def linkedin_auth(request):
     except:
         # Get name
         name_request = requests.get(
-            config.LINKEDIN_GET_NAME_URL, headers=info_headers)
+            constants.LINKEDIN_GET_NAME_URL, headers=info_headers)
         name = name_request.json()['localizedFirstName'] + \
             ' ' + name_request.json()['localizedLastName']
         # Create new expert
@@ -157,14 +158,14 @@ def linkedin_auth(request):
 def facebook_auth(request):
     token_params = {
         'client_id': config.FACEBOOK_APP_ID,
-        'redirect_uri': config.FACEBOOK_REDIRECT_URL,
+        'redirect_uri': constants.FACEBOOK_REDIRECT_URL,
         'client_secret': config.FACEBOOK_APP_SECRET,
         'code': request.GET['code']
     }
 
     # Get access token
     token_request = requests.get(
-        config.FACEBOOK_TOKEN_URL, params=token_params)
+        constants.FACEBOOK_TOKEN_URL, params=token_params)
     token = token_request.json()['access_token']
 
     graph = facebook.GraphAPI(access_token=token, version="2.12")
