@@ -18,7 +18,7 @@ def is_comment_valid(content):
     data = '{comment: {text: "' + content + \
         '"}, languages: ["en"], requestedAttributes: {TOXICITY:{}}}'
     payload = {
-        "key": constants.PERSPECTIVE_API_KEY
+        "key": config.PERSPECTIVE_API_KEY
     }
 
     r = requests.post(constants.PERSPECTIVE_API_URL,
